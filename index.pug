@@ -1,0 +1,161 @@
+-var github = "https://github.com/AletzMan";
+-var linkedin = "https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/";
+
+-var technologies = ["html", "css", "javascript", "sass", "pug", "git", "github", "mysql", "csharp", "netcore", "xamarin", "xaml", "c", "vscode", "vs", "labview", "teststand", "cvi"];
+-var technologiesNames = ["html", "css", "javascript", "sass", "pug", "git", "github", "mysql", "c#", "netcore", "xamarin forms", "xaml", "c","visual studio code", "visual studio", "labview", "teststand", "lab/windows cvi"];
+-var sourceLogos = "./assets/icons/";
+
+mixin createLogosImages
+    each val, index in technologies
+        div(class="logos__name") 
+            div(class="logos__bubble") #[img(class="logos--"+technologies[index]+" logo" src=sourceLogos+technologies[index]+"-logo.svg" alt="Logo "+technologies[index] loading="lazy" draggable="false")] #[br]
+            span=technologiesNames[index]  
+        
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="./styles/main_style.min.css")
+        link(rel="shortcut icon" href="./assets/logos/logo-tab.svg")
+        script(defer src="./scripts/main_script.prod.js") 
+        title Alejandro Garcia
+    body 
+        header(class="header")
+            div(class="header__container")
+                img(class="header__logo" src="./assets/logos/logo-large.svg", alt="logo Alejandro Garcia" loading="lazy" draggable="false")
+                ul(class="header__menu menu")
+                    li(class="menu__list menu__list--home") #[a(class="menu__list--link" href="#section__home" title="Go to Home" rel="noopener noreferrer") HOME]
+                    li(class="menu__list menu__list--skills") #[a(class="menu__list--link" href="#section__skills" title="Go to Skills" rel="noopener noreferrer")  SKILLS]
+                    li(class="menu__list menu__list--projects") #[a(class="menu__list--link" href="#section__projects" title="Go to Projects" rel="noopener noreferrer")  PROJECTS]
+                    li(class="menu__list menu__list--about") #[a(class="menu__list--link" href="#section__about" title="Go to About Me" rel="noopener noreferrer")  ABOUT ME]
+                    li(class="menu__list menu__list--contact") #[a(class="menu__list--link" href="#section__contact" title="Go to Contact" rel="noopener noreferrer")  CONTACT]
+                    div(class="menu__selection")
+        div(class="menumobil__content")
+        section(id="section__home" class="home section")
+            h2(class="home__title title") HOME
+            div(class="home__container")
+                p(class="description__name") Hey, #[br]My name is
+                p(class="name") Alejandro.
+                span(class="description__profesion")
+                span(class="home__idea") "Turning ideas and desing into code"        
+                img(class="home__photo" src="./assets/photos/my_photo.jpg" alt="photo of Alejandro Garcia" loading="lazy" draggable="false")
+                a(class="home__link--github networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
+                    img(class="home__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
+                    span(class="github__name networks__name") GitHub
+                a(class="home__link--linkedin networks"  href=linkedin title="Go To Linkedin" target="_blank" rel="noopener noreferrer")   
+                    img(class="home__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="photo of linkedin from  Alejandro Garcia" loading="lazy" draggable="false")
+                    span(class="linkedin__name networks__name") Linkedin
+        section(class="skills section" id="section__skills")
+            h2(class="skills__title title") SKILLS
+            div(class="skills__logos logos")
+                button(class="logos--webdev technologies" href="#") Web
+                button(class="logos--mobil technologies" href="#") Mobil
+                button(class="logos--desktop technologies" href="#") Desktopr
+                button(class="logos--test technologies" href="#") Test and Measurement Systems
+                button(class="logos--all technologies" href="#") Development platforms
+                +createLogosImages                
+        section(class="projects section" id="section__projects")
+            h2(class="projects__title title") PROJECTS
+            div(class="projects__container")
+                div(class="project")
+                    h3(class="project__title") Paint Board
+                    div(class="project__technologies")
+                        img( src="./assets/icons/html-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/css-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/javascript-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/pug-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/sass-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                    img(class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false")
+                    div(class="project__options")
+                        button(class="project__options--zoom")
+                        a(class="project__options--repository networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
+                            img(class="footer__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
+                        a(class="project__options--linkpreview networks"  href=linkedin title="Go To Linkedin" target="_blank" rel="noopener noreferrer")   
+                            img(class="footer__icon--linkedin networks__logo" src="../assets/icons/preview-icon.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false")
+                div(class="project")
+                    h3(class="project__title") Paint Board
+                    div(class="project__technologies")
+                        img( src="./assets/icons/html-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/css-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/javascript-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/pug-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/sass-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                    img(class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false")
+                    div(class="project__options")
+                        button(class="project__options--zoom")
+                        a(class="project__options--repository networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
+                            img(class="footer__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
+                        a(class="project__options--linkpreview networks"  href=linkedin title="Go To Linkedin" target="_blank" rel="noopener noreferrer")   
+                            img(class="footer__icon--linkedin networks__logo" src="../assets/icons/preview-icon.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false")
+                div(class="project")
+                    h3(class="project__title") Paint Board
+                    div(class="project__technologies")
+                        img( src="./assets/icons/html-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/css-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/javascript-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/pug-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/sass-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                    img(class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false")
+                    div(class="project__options")
+                        button(class="project__options--zoom")
+                        a(class="project__options--repository networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
+                            img(class="footer__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
+                        a(class="project__options--linkpreview networks"  href=linkedin title="Go To Linkedin" target="_blank" rel="noopener noreferrer")   
+                            img(class="footer__icon--linkedin networks__logo" src="../assets/icons/preview-icon.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false")
+                div(class="project")
+                    h3(class="project__title") Paint Board
+                    div(class="project__technologies")
+                        img( src="./assets/icons/html-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/css-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/javascript-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/pug-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                        img( src="./assets/icons/sass-logo.svg" alt="photo of project" loading="lazy" draggable="false")
+                    img(class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false")
+                    div(class="project__options")
+                        button(class="project__options--zoom")
+                        a(class="project__options--repository networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
+                            img(class="footer__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
+                        a(class="project__options--linkpreview networks"  href=linkedin title="Go To Linkedin" target="_blank" rel="noopener noreferrer")   
+                            img(class="footer__icon--linkedin networks__logo" src="../assets/icons/preview-icon.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false")
+        section(class="about section" id="section__about")
+            h2(class="about__title title") ABOUT ME
+            div(class="about__container aboutme")
+                div(class="aboutme__description")
+                    p(class="aboutme__description--paragraph") Since I was very young I was very interested in technology, first in electronics, I liked to disassemble electronic objects and see how they worked inside.
+                    p(class="aboutme__description--paragraph") Years went by and I decided to study a career in electronics, I started working in the electronics field and programming caught my attention, I started with microcontrollers and so I could combine my two passions, electronics and programming.
+                    p(class="aboutme__description--paragraph") I had the opportunity to work as a software developer in the electronics industry, programming test equipment for electronic cards (Functional Tests), and automation of production lines with PLC.
+                    p(class="aboutme__description--paragraph") I've been studying Web programming for 1 year, and since the first day I've been excited with this world, and waiting for the opportunity to work in this fascinating area, for the moment I'm in the Front-End area and little by little I'm getting into the Back-End.
+                img(class="aboutme__image" src="./assets/photos/aboutme-illustration.svg", alt="About illustator")
+
+        section(class="contact section" id="section__contact")
+            h2(class="contact__title title") CONTACT
+            div(class="contact__type")
+                div(class="contact__type--networks")
+                    a(class="footer__link--github networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
+                        img(class="footer__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
+                    a(class="footer__link--linkedin networks"  href=linkedin title="Go To Linkedin" target="_blank" rel="noopener noreferrer")   
+                        img(class="footer__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false")
+                    a(class="footer__link--mail networks"  href="mailto:alejo_2986@hotmail.com" title="Send Mail" target="_blank" rel="noopener noreferrer")   
+                        img(class="footer__icon--mail networks__logo" src="./assets/icons/mail-icon.svg" alt="icon of linkedin mail" loading="lazy" draggable="false")
+                div(class="contact__type--form")
+        footer(class="footer")
+            p(class="footer__copyright") Made in #[img(class="footer__copyright--icon" title="México" src="./assets/icons/mexico-icon.ico" alt="mexico flag" loading="lazy" draggable="false")] by Alejandro Garcia Alonso
+            div(class="footer__networks")
+                a(class="footer__link--github networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
+                    img(class="footer__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
+                a(class="footer__link--linkedin networks"  href=linkedin title="Go To Linkedin" target="_blank" rel="noopener noreferrer")   
+                    img(class="footer__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false")
+                a(class="footer__link--mail networks"  href="mailto:alejo_2986@hotmail.com" title="Send Mail" target="_blank" rel="noopener noreferrer")   
+                    img(class="footer__icon--mail networks__logo" src="./assets/icons/mail-icon.svg" alt="icon of linkedin mail" loading="lazy" draggable="false")
+            div(class="footer__menumobil menumobil")
+                div(class="menumobil__link--select") HOME
+                ul(class="menumobil__links")
+                    li(class="menumobil__links--home link")
+                    li(class="menumobil__links--skills link")
+                    li(class="menumobil__links--projects link")
+                    li(class="menumobil__links--about link")
+                    li(class="menumobil__links--contact link")
+                

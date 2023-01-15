@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Prosto+One&family=Raleway");
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color_backmedium);
+  font-size: 100%;
+  font-family: var(--font-General);
+  position: relative;
+}
+body::-webkit-scrollbar {
+  width: 13px;
+}
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 1px;
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--color_deactivated);
+  border-radius: 1px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--color_backlight);
+}
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  vertical-align: baseline;
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, iframe, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* (Opcional) */
+  object-fit: cover;
+  /* (Opcional) */
+  object-position: center center;
+}
+
+:root {
+  --color_backdark: #222831;
+  --color_backmedium: #393E46;
+  --color_backlight: #626a77;
+  --color_deactivated: #ecb63755;
+  --color_activated: #ecb637;
+  --color_font: #EEEEEE;
+  --color_font_section: #EEEEEE55;
+  --color_back_section: #222831BB;
+  --font_Display: "DotGothic16", sans-serif;
+  --font-General: "Raleway", sans-serif;
+  --font-Title: "Prosto One", cursive;
+  /*
+      --color_backdark: #111111;
+      --color_backmedium: #282b21;
+      --color_backlight: #3E432E;
+      --color_deactivated: #616F39;
+      --color_activated: #A7D129;
+      --color_font: #EEEEEE;
+      --color_font_section: #FFFFFF20;
+      --color_back_section: #00000099;
+      --font_Display: 'DotGothic16', sans-serif;
+      --font-General: 'Raleway', sans-serif;
+      --font-Title: 'Prosto One', cursive;
+  */
+}
