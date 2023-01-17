@@ -4,24 +4,24 @@ html {
 }
 
 body {
+  position: relative;
   background: var(--color_backmedium);
   font-size: 100%;
   font-family: var(--font-General);
-  position: relative;
 }
 body::-webkit-scrollbar {
   width: 13px;
 }
 body::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--color_backlight);
   border-radius: 1px;
 }
 body::-webkit-scrollbar-thumb {
-  background: var(--color_deactivated);
+  background: var(--color_backdark);
   border-radius: 1px;
 }
 body::-webkit-scrollbar-thumb:hover {
-  background: var(--color_backlight);
+  background: var(--color_backmedium);
 }
 
 *, *::before, *::after {
@@ -50,17 +50,33 @@ img, picture, video, iframe, figure {
 }
 
 :root {
-  --color_backdark: #222831;
-  --color_backmedium: #393E46;
-  --color_backlight: #626a77;
-  --color_deactivated: #ecb63755;
-  --color_activated: #ecb637;
-  --color_font: #EEEEEE;
-  --color_font_section: #EEEEEE55;
+  --color_backdark: #121212;
+  --color_backmedium: #272727;
+  --color_backlight: #373737;
+  --color_deactivated: #005fec55;
+  --color_activated: #004ec4;
+  --color_font: #D6D6D6;
+  --color_fontTitle: #a7a7a7;
+  --color_font_section: #EEEEEE22;
   --color_back_section: #222831BB;
+  --color_bubble_hover: #005fec33;
   --font_Display: "DotGothic16", sans-serif;
   --font-General: "Raleway", sans-serif;
   --font-Title: "Prosto One", cursive;
+  /*
+      --color_backdark: #222831;
+      --color_backmedium: #393E46;
+      --color_backlight: #626a77;
+      --color_deactivated: #ecb63755;;
+      --color_activated: #ecb637;
+      --color_font: #EEEEEE;
+      --color_font_section: #EEEEEE22;
+      --color_back_section: #222831BB;
+      --color_bubble_hover: #ecb63733;
+      --font_Display: 'DotGothic16', sans-serif;
+      --font-General: 'Raleway', sans-serif;
+      --font-Title: 'Prosto One', cursive;
+  */
   /*
       --color_backdark: #111111;
       --color_backmedium: #282b21;
@@ -82,7 +98,7 @@ img, picture, video, iframe, figure {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 5rem;
+  height: 4rem;
   z-index: 7;
   overflow: hidden;
   background-color: var(--color_backdark);
@@ -96,17 +112,17 @@ img, picture, video, iframe, figure {
   margin: 0 auto;
   align-items: center;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 5rem;
+  grid-template-rows: 4rem;
 }
 @media only screen and (min-width: 992px) {
   .header__container {
-    width: 70%;
+    width: 65%;
   }
 }
 .header__logo {
-  width: 38%;
-  min-width: 10rem;
-  max-width: 7rem;
+  width: 35%;
+  min-width: 7rem;
+  max-width: 6rem;
   justify-self: center;
   grid-column: 1/span 2;
 }
@@ -161,15 +177,14 @@ img, picture, video, iframe, figure {
 
 .title {
   width: 100%;
+  height: 3.5rem;
   font-size: 2rem;
   font-family: var(--font-Title);
-  color: var(--color_font);
+  color: var(--color_fontTitle);
   font-weight: 900;
-  border-bottom: 1px solid var(--color_font);
-  background: linear-gradient(90deg, var(--color_deactivated), #A7D12901);
-  padding: 0.6rem 0 0 0.5rem;
-  border-radius: 0.5rem 0 0 0;
-  letter-spacing: 0.2rem;
+  border-bottom: 1px solid var(--color_activated);
+  padding: 0.5rem 0 0 2rem;
+  letter-spacing: 0.1rem;
 }
 
 .section {
@@ -180,6 +195,7 @@ img, picture, video, iframe, figure {
   justify-items: center;
   transition: opacity 0.5s linear;
   padding-top: 0rem;
+  z-index: 6;
 }
 @media only screen and (min-width: 768px) {
   .section {
@@ -188,7 +204,7 @@ img, picture, video, iframe, figure {
 }
 @media only screen and (min-width: 992px) {
   .section {
-    width: 72%;
+    width: 65%;
     margin: -1rem auto;
     padding-top: 6rem;
   }
@@ -213,6 +229,7 @@ img, picture, video, iframe, figure {
   margin: 1rem auto;
   color: var(--color_font);
   align-self: flex-start;
+  animation: animationSkillsLogos 1s linear 2.5s both;
 }
 @media only screen and (min-width: 768px) {
   .home__idea {
@@ -290,7 +307,7 @@ img, picture, video, iframe, figure {
   align-self: center;
   opacity: 0;
   color: var(--color_font);
-  animation: animationIntoName 1s linear 0.3s both;
+  animation: animationIntoName 1.5s cubic-bezier(0.49, 0.58, 0.66, 1.14) 0.25s both;
 }
 .description__name br {
   display: none;
@@ -313,6 +330,7 @@ img, picture, video, iframe, figure {
   width: fit-content;
   margin: 0.5rem auto;
   font-size: 2rem;
+  font-weight: 500;
   grid-column: 1/span 2;
   grid-row: 5/6;
   background: var(--color_back_section);
@@ -341,6 +359,10 @@ img, picture, video, iframe, figure {
     color: var(--color_deactivated);
   }
 }
+.description__profesion::before {
+  content: ".";
+  color: transparent;
+}
 
 .name {
   grid-column: 1/span 2;
@@ -350,7 +372,7 @@ img, picture, video, iframe, figure {
   font-weight: 600;
   opacity: 0;
   margin: 0.5rem auto;
-  animation: animationIntoName 1s linear both;
+  animation: animationIntoName 1.5s cubic-bezier(0.49, 0.58, 0.66, 1.14) both;
 }
 @media only screen and (min-width: 768px) {
   .name {
@@ -366,7 +388,7 @@ img, picture, video, iframe, figure {
   text-decoration: none;
 }
 .networks:hover {
-  filter: grayscale(0%) hue-rotate(330deg);
+  filter: grayscale(0%) hue-rotate(140deg);
 }
 
 .linkedin__name {
@@ -396,41 +418,74 @@ img, picture, video, iframe, figure {
 }
 
 .technologies {
-  font-size: 1rem;
   display: none;
   width: 100%;
   height: 100%;
   min-width: 7rem;
-  color: var(--color_font);
+  overflow: hidden;
+}
+.technologies:checked + .label__tech {
+  color: transparent;
+}
+.technologies:checked + .label__tech:before {
+  animation: animationTechnologies 0.4s linear both alternate;
+}
+
+.label__tech {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 1.2rem 0rem 0 0rem;
+  text-align: center;
+  font-size: 1rem;
   font-family: var(--font-General);
-  border-left: 2px solid var(--color_font);
-  background-color: var(--color_backdark);
   font-weight: 500;
   word-wrap: break-word;
+  color: var(--color_font);
+  background-color: var(--color_backlight);
+  border-left: 1px solid var(--color_font);
+  overflow: hidden;
   cursor: pointer;
 }
-.technologies:hover {
+.label__tech:hover {
+  color: var(--color_activated);
+  opacity: 1;
+}
+.label__tech::before {
+  position: absolute;
+  content: attr(name);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: -125%;
+  padding: 1.2rem 0 0 0;
+  background-color: var(--color_backdark);
+  border-bottom: 1px solid var(--color_activated);
   color: var(--color_activated);
 }
-@media only screen and (min-width: 992px) {
-  .technologies {
+@media only screen and (min-width: 768px) {
+  .label__tech {
     display: block;
   }
 }
 
 .logos {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   align-items: center;
   justify-items: center;
   row-gap: 0.5rem;
   margin: 1rem 0 0 0;
-  background: linear-gradient(0deg, var(--color_back_section) 0%, var(--color_backmedium) 100%);
+  background: var(--color_backdark);
+  border-bottom: 1px solid var(--color_activated);
+  box-shadow: -1px -1px 1px 0px var(--color_font_section) inset, -2px 2px 10px 2px var(--color_backdark);
 }
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   .logos {
-    grid-template-rows: 1fr 2fr 2fr 2fr;
+    grid-template-rows: 0.7fr 2fr 2fr 2fr;
     grid-template-columns: repeat(5, 1fr);
     margin: 2rem 0 0 0;
   }
@@ -447,6 +502,7 @@ img, picture, video, iframe, figure {
   font-size: 0.6rem;
   align-items: center;
   justify-content: center;
+  animation: animationSkillsLogos 0.5s both linear;
 }
 @media only screen and (min-width: 768px) {
   .logos__name {
@@ -470,16 +526,34 @@ img, picture, video, iframe, figure {
   }
 }
 .logos--webdev {
-  color: var(--color_font);
-  border-bottom: 4px solid var(--color_activated);
+  color: var(--color_activated);
+  border-left: 0px;
   border-left: none;
-  background: linear-gradient(var(--color_backlight) 0%, var(--color_backdark) 100%);
 }
 .logos--webdev:hover {
   color: var(--color_font);
 }
+.logos__select {
+  position: absolute;
+  display: block;
+  height: 2rem;
+  top: -3.3rem;
+  right: 0;
+  padding: 0.1rem 1rem 0 1rem;
+  font-size: 1.3rem;
+  font-family: var(--font-General);
+  color: var(--color_font);
+  background-color: var(--color_backlight);
+  border-bottom: 1px solid var(--color_activated);
+}
+@media only screen and (min-width: 768px) {
+  .logos__select {
+    display: none;
+  }
+}
 
 .projects__container {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   width: 100%;
@@ -559,9 +633,30 @@ img, picture, video, iframe, figure {
   filter: grayscale(0);
 }
 
+.previewContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--color_back_section);
+  border: 1px solid var(--color_font);
+  z-index: 8;
+}
+.previewContainer__preview {
+  display: grid;
+  align-items: center;
+  width: 85%;
+  height: 100%;
+}
+.previewContainer__preview--image {
+  width: 100%;
+  object-fit: scale-down;
+}
+
 .aboutme {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
   margin: 4rem 0 0 0;
   align-items: center;
   justify-content: center;
@@ -571,8 +666,10 @@ img, picture, video, iframe, figure {
   color: var(--color_font);
   letter-spacing: 0.06rem;
   line-height: 1.3rem;
-  padding: 3rem;
-  background: linear-gradient(var(--color_backdark), var(--color_backmedium));
+  padding: 2rem;
+  background: var(--color_backdark);
+  border-bottom: 1px solid var(--color_activated);
+  box-shadow: -1px -1px 1px 0px var(--color_font_section) inset, -2px 2px 10px 2px var(--color_backdark);
 }
 .aboutme__description--paragraph {
   margin: 1rem 0;
@@ -584,6 +681,7 @@ img, picture, video, iframe, figure {
 
 .contact {
   height: 45.5rem;
+  text-align: center;
 }
 @media only screen and (min-width: 992px) {
   .contact {
@@ -592,21 +690,36 @@ img, picture, video, iframe, figure {
 }
 .contact__type {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  justify-content: flex-end;
+  grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(5rem, 1fr));
+  width: 100%;
   gap: 1rem;
   margin: 4rem 0 0 0;
   align-items: center;
   justify-content: center;
 }
 .contact__type--networks {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
-  height: 15rem;
-  background-color: #2a6652;
 }
-.contact__type--form {
+.contact__type--message {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
-  height: 15rem;
-  background-color: #4fa021;
+  color: var(--color_font);
+}
+.contact__link--github, .contact__link--linkedin, .contact__link--mail {
+  width: 10%;
+  min-width: 3rem;
+}
+.contact__name--github, .contact__name--linkedin, .contact__name--mail {
+  position: relative;
+  top: 0.5rem;
+  color: var(--color_font);
 }
 
 .footer {
@@ -618,7 +731,7 @@ img, picture, video, iframe, figure {
   width: 100%;
   height: 4rem;
   background-color: var(--color_backdark);
-  border-top: 3px solid var(--color_activated);
+  border-top: 1px solid var(--color_activated);
   z-index: 5;
 }
 @media only screen and (min-width: 768px) {
@@ -755,8 +868,14 @@ img, picture, video, iframe, figure {
   border-radius: 50%;
   text-align: center;
   box-shadow: -10px -10px 20px 7px var(--color_font_section) inset;
-  filter: blur(0px);
-  z-index: 4;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 65%;
+  opacity: 0.25;
+  z-index: 0;
+}
+.tag__move:hover {
+  opacity: 1;
 }
 
 @keyframes animationCursor {
@@ -769,7 +888,7 @@ img, picture, video, iframe, figure {
 }
 @keyframes animationIntoName {
   0% {
-    transform: translateX(-20%);
+    transform: translateX(-35%);
     opacity: 0;
   }
   100% {
@@ -783,5 +902,25 @@ img, picture, video, iframe, figure {
   }
   100% {
     transform: rotate(10deg);
+  }
+}
+@keyframes animationTechnologies {
+  0% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(125%);
+    opacity: 1;
+  }
+}
+@keyframes animationSkillsLogos {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(30%);
+    opacity: 1;
   }
 }

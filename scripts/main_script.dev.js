@@ -12,19 +12,38 @@ var selectItemMenu = document.querySelector(".menu__selection");
 var presentation = document.querySelector(".description__profesion");
 var sections = document.querySelectorAll(".section");
 var sectionHome = document.querySelector(".home");
+var header = document.querySelector(".header");
+var footer = document.querySelector(".footer");
+var typeSkills = document.querySelectorAll(".technologies");
+var containerSkills = document.querySelector(".logos");
+var containerProjects = document.querySelector(".projects__container");
+var project = document.querySelector(".project");
 var menuMobilSelect = document.querySelector(".menumobil__link--select");
 var menuMobilContainer = document.querySelector(".menumobil");
 var menuMobil = document.querySelectorAll(".link");
 selectItemMenu.style.left = "0px";
 selectItemMenu.style.top = "0px";
-var textPresentation = 'Front-End Developer';
-var numbertags = 20;
+var textPresentation = ['Software Developer', 'Front-End Developer', 'Electrical Design'];
+var numbertags = 35;
 var containerTags = [];
 var nameTags = ["<header>", "<section>", "<footer>", "<nav>", "<aside>", "<img>", "<button>", "<input>", "<picture>", "<table>", "<meta>", "<select>", "<span>", "<textarea>", "<video>"];
+var nameLogos = ["html", "css", "javascript", "sass", "pug", "git", "github", "mysql", "csharp", "netcore", "xamarin", "xaml", "c", "vscode", "vs", "labview", "teststand", "cvi"];
+
+var mobileDetect = function mobileDetect() {
+  var check = false;
+
+  (function (a) {
+    if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+  })(navigator.userAgent || navigator.vendor || window.opera);
+
+  return check;
+};
 
 onload = function onload() {
+  CreateProject();
   initAnimation();
   scroll(0, 0);
+  CreateLogoSkill(0);
 };
 
 for (var index = 0; index < menuDesktop.length; index++) {
@@ -45,17 +64,36 @@ for (var index = 0; index < menuDesktop.length; index++) {
   });
 }
 
-var intervalPresentetion = setInterval(LoadPresentation, 130);
-var numLetter = 0;
+setTimeout(function () {
+  var intervalPresentetion = setInterval(LoadPresentation, 130);
+  var numLetter = 0;
+  var reverse = false;
+  var textReverse = '';
+  var textNumber = 0;
 
-function LoadPresentation() {
-  if (numLetter < textPresentation.length) {
-    presentation.innerHTML += textPresentation[numLetter];
-    numLetter += 1;
-  } else {
-    clearInterval(intervalPresentetion);
+  function LoadPresentation() {
+    if (numLetter < textPresentation[textNumber].length && !reverse) {
+      presentation.innerHTML += textPresentation[textNumber][numLetter];
+      textReverse = textPresentation[textNumber];
+      console.log("DENTRO");
+      numLetter += 1;
+    } else {
+      reverse = true;
+    }
+
+    if (reverse) {
+      presentation.innerHTML = textReverse.substring(0, numLetter);
+      numLetter -= 1;
+
+      if (presentation.innerHTML.length == 0) {
+        reverse = false;
+        numLetter = 0;
+        textNumber += 1;
+        textNumber = textNumber > textPresentation.length - 1 ? 0 : textNumber;
+      }
+    }
   }
-}
+}, 1600);
 
 var TagBubble =
 /*#__PURE__*/
@@ -76,31 +114,20 @@ function () {
     value: function createItem() {
       var _this = this;
 
-      var newTagMove = document.createElement("div");
-      newTagMove.textContent = nameTags[GetRandomNumber(0, 14)];
+      var newTagMove = document.createElement("div"); //newTagMove.textContent = nameTags[GetRandomNumber(0, 14)];
+
+      newTagMove.style.backgroundImage = "url('./assets/icons/" + nameLogos[GetRandomNumber(0, nameLogos.length - 1)] + "-logo.svg')";
       newTagMove.classList = "tag__move";
       newTagMove.style.left = "".concat(this.posX, "px");
       newTagMove.style.top = "".concat(this.posY, "px");
       containerTags.push(newTagMove);
       sectionHome.appendChild(newTagMove);
       var fontSize = parseFloat(window.getComputedStyle(newTagMove, null).getPropertyValue('font-size'));
-      newTagMove.style.width = "".concat(Math.floor(newTagMove.getBoundingClientRect().width + 10), "px");
+      newTagMove.style.width = "".concat(Math.floor(newTagMove.getBoundingClientRect().width + 40), "px");
       newTagMove.style.paddingTop = "".concat(Math.floor(newTagMove.getBoundingClientRect().width / 2) - fontSize / 1.5, "px");
       newTagMove.style.height = "".concat(Math.floor(newTagMove.getBoundingClientRect().width), "px");
       this.width = Math.floor(newTagMove.getBoundingClientRect().width);
       this.height = Math.floor(newTagMove.getBoundingClientRect().height);
-      newTagMove.addEventListener('mouseover', function (e) {
-        //newTagMove.style.backgroundColor = '#A7D12955';
-        newTagMove.style.boxShadow = '-10px -10px 20px 7px var(--color_activated) inset';
-        newTagMove.style.color = '#FFFFFF55';
-        newTagMove.style.filter = 'blur(0px)';
-      });
-      newTagMove.addEventListener('mouseout', function (e) {
-        //newTagMove.style.backgroundColor = 'transparent';
-        newTagMove.style.boxShadow = '-10px -10px 20px 7px #FFFFFF20 inset';
-        newTagMove.style.color = '#FFFFFF20';
-        newTagMove.style.filter = 'blur(0px)';
-      });
       this.initPosMouseX = 0;
       this.initPosMouseY = 0;
       newTagMove.addEventListener('mousedown', function (e) {
@@ -237,8 +264,8 @@ var detectCollisions = function detectCollisions() {
 
 var borderCollisionDetection = function borderCollisionDetection() {
   var collisionLimitXLeft = 1;
-  var collisionLimitXRight = window.innerWidth - 30;
-  var collisionLimitYTop = 80;
+  var collisionLimitXRight = window.outerWidth - 30;
+  var collisionLimitYTop = 100;
   var collisionLimitYBottom = window.innerHeight - 70;
   var speedReset = 0.95;
   var bubble;
@@ -275,10 +302,139 @@ function GetRandomNumber(min, max) {
 
 function GetRandomNumberFloat(min, max) {
   return Math.random() * (max - min) + min;
-} /////////////////////////////////////////////
-///////--------- MENU MOBIL ---------////////
-/////////////////////////////////////////////
+} ////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////--------- SECTION SKILLS ---------/////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
 
+
+var sourceLogos = "./assets/icons/";
+
+var _loop = function _loop(_index4) {
+  typeSkills[_index4].addEventListener("click", function (e) {
+    CreateLogoSkill(_index4);
+  });
+};
+
+for (var _index4 = 0; _index4 < typeSkills.length; _index4++) {
+  _loop(_index4);
+}
+
+var CreateLogoSkill = function CreateLogoSkill(numberSkill) {
+  var SKILLS = [["html", "css", "javascript", "pug", "sass", "git", "github", "vscode"], ["csharp", "netcore", "xaml", "git", "github", "vs"], ["csharp", "netcore", "xamarin", "xaml", "vs", "git", "github"], ["c", "csharp", "xaml", "labview", "siemens", "git", "github"], ["vscode", "vs", "git", "labview", "teststand", "cvi", "tiaportal"]];
+  var SKILLSNAME = [["html", "css", "javascript", "pug", "sass", "git", "git hub", "visual studio code"], ["c#", "netcore", "xaml", "git", "github", "visual studio"], ["c#", "netcore", "xamarin forms", "xaml", "visual studio", "git", "github"], ["c", "c#", "xaml", "labview (Graphic)", "scl, kop", "git", "github"], ["visual studio code", "visual studio", "git", "labview", "teststand", "lab/windows cvi", "tia portal"]];
+
+  do {
+    containerSkills.removeChild(containerSkills.lastChild);
+  } while (containerSkills.lastChild.className === "logos__name");
+
+  for (var _index5 = 0; _index5 < SKILLS[numberSkill].length; _index5++) {
+    var newLogoTech = document.createElement("div");
+    newLogoTech.classList = "logos__name";
+    containerSkills.appendChild(newLogoTech);
+    newLogoTech.style.zIndex = "1";
+    var newLogoBubble = document.createElement("div");
+    newLogoBubble.classList = "logos__bubble";
+    newLogoTech.appendChild(newLogoBubble);
+    var newLogoImage = document.createElement("img");
+    newLogoImage.classList = "logo";
+    newLogoImage.src = sourceLogos + SKILLS[numberSkill][_index5] + "-logo.svg";
+    newLogoBubble.appendChild(newLogoImage);
+    var newLogoName = document.createElement("span");
+    newLogoName.textContent = SKILLSNAME[numberSkill][_index5];
+    newLogoTech.appendChild(newLogoName);
+  }
+}; ////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////--------- SECTION PROJECTS ---------/////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+var projectsZoom = document.querySelectorAll(".project__options--zoom");
+var body = document.querySelector("body");
+var sourcePhotos = "./assets/photos/project_";
+var Title = ["Draw Board", "Test Sequence", "Electronic Encyclopedia"];
+var Technologies = [["html", "css", "javascript", "pug", "sass"], ["csharp", "netcore", "xaml", "sql", "mysql", "git", "github"], ["csharp", "netcore", "xamarin", "xaml"], ["c", "csharp", "xaml", "labview"], ["vscode", "vs", "git", "labview"]];
+var Repositories = ["https://aletzman.github.io/", "https://github.com/AletzMan", "https://aletzman.github.io/"];
+
+var CreateProject = function CreateProject() {
+  for (var _index6 = 0; _index6 < 2; _index6++) {
+    var newProject = project.cloneNode(true);
+    containerProjects.appendChild(newProject);
+  }
+
+  EditProjects();
+};
+
+var EditProjects = function EditProjects() {
+  var projects = document.querySelectorAll(".project");
+  var projectsTitle = document.querySelectorAll(".project__title");
+  var projectsTechnologies = document.querySelectorAll(".project__technologies");
+  var projectsImage = document.querySelectorAll(".project__image");
+  var projectsRepository = document.querySelectorAll(".project__options--repository");
+  var projectsPreview = document.querySelectorAll(".project__options--linkpreview");
+  projectsZoom = document.querySelectorAll(".project__options--zoom");
+
+  var _loop2 = function _loop2(_index7) {
+    projectsTitle[_index7].innerHTML = Title[_index7];
+
+    Technologies[_index7].forEach(function (namelogo) {
+      var newImgTech = document.createElement("img");
+      newImgTech.src = sourceLogos + namelogo + "-logo.svg";
+
+      projectsTechnologies[_index7].appendChild(newImgTech);
+    });
+
+    projectsImage[_index7].src = sourcePhotos + _index7 + ".jpg";
+    projectsRepository[_index7].href = Repositories[_index7];
+  };
+
+  for (var _index7 = 0; _index7 < projects.length; _index7++) {
+    _loop2(_index7);
+  }
+
+  AsignEvent();
+};
+
+var containerCreate = false;
+
+var AsignEvent = function AsignEvent() {
+  var projects = document.querySelector(".projects");
+  projectsZoom.forEach(function (element, index) {
+    element.addEventListener("mouseup", function () {
+      containerCreate = false;
+      var newPreviewContainer = document.createElement("div");
+      newPreviewContainer.classList = "previewContainer";
+      newPreviewContainer.style.height = window.innerHeight + 18 + "px";
+      body.appendChild(newPreviewContainer);
+      newPreviewContainer.style.top = scrollY + "px";
+      newPreviewContainer.style.left = "0px";
+      var newPreview = document.createElement("div");
+      newPreview.classList = "previewContainer__preview";
+      newPreviewContainer.appendChild(newPreview);
+      var newPreviewImage = document.createElement("img");
+      newPreviewImage.classList = "previewContainer__preview--image";
+      newPreviewImage.src = sourcePhotos + index + ".jpg";
+      newPreview.appendChild(newPreviewImage);
+      body.style.overflowX = "hidden";
+      body.style.overflowY = "hidden";
+      setTimeout(function () {
+        containerCreate = true;
+      }, 1200);
+    });
+  });
+};
+
+body.addEventListener("mouseup", function () {
+  if (containerCreate) {
+    do {
+      body.removeChild(body.lastChild);
+    } while (body.lastChild.className === "previewContainer");
+
+    body.style.overflowX = "auto";
+    body.style.overflowY = "auto";
+  }
+}); ////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////--------- MENU MOBIL ---------/////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
 
 var nameTagMenu = ["HOME", "SKILLS", "PROJECTS", "ABOUT", "CONTACT"];
 var positionMenuselected = 0;
@@ -286,18 +442,18 @@ var indexMenuCurrent = 0;
 var indexMenuBefore = 0;
 var numberOfSectionsDisplaced = 0;
 
-var _loop = function _loop(_index4) {
-  menuMobil.item(_index4).addEventListener('mousedown', function (e) {
+var _loop3 = function _loop3(_index8) {
+  menuMobil.item(_index8).addEventListener('mousedown', function (e) {
     sections.forEach(function (section) {
       section.style.opacity = 0;
     });
     indexMenuBefore = indexMenuCurrent;
-    indexMenuCurrent = _index4;
+    indexMenuCurrent = _index8;
     numberOfSectionsDisplaced = Math.abs(indexMenuCurrent - indexMenuBefore);
-    console.log(sections[_index4].getBoundingClientRect().height);
+    console.log(sections[_index8].getBoundingClientRect().height);
     var scrollPosition = 0;
 
-    for (var numberSection = 0; numberSection < _index4; numberSection++) {
+    for (var numberSection = 0; numberSection < _index8; numberSection++) {
       scrollPosition += sections[numberSection].getBoundingClientRect().height + 80;
     }
 
@@ -311,8 +467,8 @@ var _loop = function _loop(_index4) {
   });
 };
 
-for (var _index4 = 0; _index4 < menuMobil.length; _index4++) {
-  _loop(_index4);
+for (var _index8 = 0; _index8 < menuMobil.length; _index8++) {
+  _loop3(_index8);
 }
 
 window.addEventListener("resize", function () {
@@ -323,31 +479,31 @@ document.addEventListener("scroll", function () {
   if (scrollY) {
     var designMobil = window.getComputedStyle(menuMobilContainer, null).getPropertyValue("display") == "none" ? false : true;
 
-    var _loop2 = function _loop2(_index5) {
-      if (sections[_index5].getBoundingClientRect().y < 200 && sections[_index5].getBoundingClientRect().y > -20) {
+    var _loop4 = function _loop4(_index9) {
+      if (sections[_index9].getBoundingClientRect().y < 200 && sections[_index9].getBoundingClientRect().y > -20) {
         if (designMobil) {
-          positionMenuselected = menuMobilContainer.getBoundingClientRect().width / 16 / 5 * (_index5 + 1) - menuMobilSelect.getBoundingClientRect().width / 16 - 0.2;
+          positionMenuselected = menuMobilContainer.getBoundingClientRect().width / 16 / 5 * (_index9 + 1) - menuMobilSelect.getBoundingClientRect().width / 16 - 0.2;
           menuMobilSelect.style.left = "".concat(positionMenuselected, "rem");
           setTimeout(function () {
             menuMobil.forEach(function (section) {
               section.style.filter = "invert(1)";
             });
-            menuMobil[_index5].style.filter = "invert(0)";
-            menuMobilSelect.innerText = nameTagMenu[_index5];
+            menuMobil[_index9].style.filter = "invert(0)";
+            menuMobilSelect.innerText = nameTagMenu[_index9];
           }, 400);
         } else {
-          selectItemMenu.style.left = menuDesktopArea.item(_index5).getBoundingClientRect().left - menuDesktopArea.item(0).getBoundingClientRect().left - 1 + "px";
+          selectItemMenu.style.left = menuDesktopArea.item(_index9).getBoundingClientRect().left - menuDesktopArea.item(0).getBoundingClientRect().left - 1 + "px";
           menuDesktop.forEach(function (elementMenuUnSelected) {
             //elementMenuUnSelected.style.borderBottom = "none";
             elementMenuUnSelected.style.color = "var(--color_font)";
           });
-          menuDesktop.item(_index5).style.color = "var(--color_activated)";
+          menuDesktop.item(_index9).style.color = "var(--color_activated)";
         }
       }
     };
 
-    for (var _index5 = 0; _index5 < sections.length; _index5++) {
-      _loop2(_index5);
+    for (var _index9 = 0; _index9 < sections.length; _index9++) {
+      _loop4(_index9);
     }
   }
 });
