@@ -53,13 +53,13 @@ img, picture, video, iframe, figure {
   --color_backdark: #121212;
   --color_backmedium: #272727;
   --color_backlight: #373737;
-  --color_deactivated: #005fec55;
-  --color_activated: #004ec4;
+  --color_deactivated: #64b4dabb;
+  --color_activated: #61d3e7;
   --color_font: #D6D6D6;
   --color_fontTitle: #a7a7a7;
   --color_font_section: #EEEEEE22;
   --color_back_section: #222831BB;
-  --color_bubble_hover: #005fec33;
+  --color_bubble_hover: #64b4da33;
   --font_Display: "DotGothic16", sans-serif;
   --font-General: "Raleway", sans-serif;
   --font-Title: "Prosto One", cursive;

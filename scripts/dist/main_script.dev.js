@@ -76,6 +76,7 @@ setTimeout(function () {
     if (numLetter < textPresentation[textNumber].length && !reverse) {
       presentation.innerHTML += textPresentation[textNumber][numLetter];
       textReverse = textPresentation[textNumber];
+      console.log("DENTRO");
       numLetter += 1;
     } else {
       reverse = true;
@@ -466,7 +467,7 @@ var _loop3 = function _loop3(_index8) {
       sections.forEach(function (section) {
         section.style.opacity = 1;
       });
-    }, 500);
+    }, 600);
   });
 };
 
@@ -485,21 +486,20 @@ document.addEventListener("scroll", function () {
     var _loop4 = function _loop4(_index9) {
       if (sections[_index9].getBoundingClientRect().y < 300 && sections[_index9].getBoundingClientRect().y > -20) {
         if (designMobil) {
-          positionMenuselected = menuMobilContainer.getBoundingClientRect().width / 16 / 5 * (_index9 + 1) - menuMobilSelect.getBoundingClientRect().width / 16 - 0.4;
+          positionMenuselected = menuMobilContainer.getBoundingClientRect().width / 16 / 5 * (_index9 + 1) - menuMobilSelect.getBoundingClientRect().width / 16 - 0.2;
           menuMobilSelect.style.left = "".concat(positionMenuselected, "rem");
           setTimeout(function () {
             menuMobil.forEach(function (section) {
-              section.style.filter = "invert(1)";
-              section.style.right = "0";
+              section.style.filter = "brightness(0) invert(1)";
             });
             menuMobil[_index9].style.filter = "brightness(1)";
-            menuMobil[_index9].style.right = "2.5rem";
             menuMobilSelect.innerText = nameTagMenu[_index9];
-          }, 200);
+          }, 400);
         } else {
           selectItemMenu.style.left = menuDesktopArea.item(_index9).getBoundingClientRect().left - menuDesktopArea.item(0).getBoundingClientRect().left - 1 + "px";
           menuDesktop.forEach(function (elementMenuUnSelected) {
             elementMenuUnSelected.style.color = "var(--color_font)";
+            elementMenuUnSelected.classList.add(".menu__selection--hover");
           });
           menuDesktop.item(_index9).style.color = "var(--color_activated)";
         }

@@ -13,10 +13,11 @@ $sizeContainerMenuMobil: 35rem;
     position: fixed;
     top: 0;
     width: 100%;    
-    height: 4rem;
+    height: 3.5rem;
     z-index: 7;
     overflow: hidden;
     background-color: var(--color_backdark);
+    border-bottom: 1px solid var(--color_backlight);
     &__container {
         position: relative;
         display: flex;
@@ -26,7 +27,7 @@ $sizeContainerMenuMobil: 35rem;
         margin: 0 auto;        
         align-items: center;
         grid-template-columns: 1fr 2fr;
-        grid-template-rows: 4rem;
+        grid-template-rows: 3.5rem;
         @include media(desktop-s) {
             width: 65%;
         }
@@ -54,14 +55,14 @@ $sizeContainerMenuMobil: 35rem;
     }
 }
 .menu__list {             
-        width: 7rem;          
+        width: 6rem;          
         text-align: center;      
         padding: 0.45rem 0.9rem;
         &--home,
         &--skills,
         &--projects,
         &--about {
-           border-right: 1px solid var(--color_font); 
+           //border-right: 1px solid var(--color_font); 
         }        
         &--link {              
             text-decoration: none;            
@@ -77,13 +78,16 @@ $sizeContainerMenuMobil: 35rem;
         }
     }  
 .menu__selection {
-        position: absolute;
-        width: 7.01rem;
-        height: 2rem;
-        background: linear-gradient(0deg, #626a7733, #626a7700);
-        border-bottom: 2px solid var(--color_activated);
-        transition: left 0.3s linear;
+    position: absolute;
+    width: 6rem;
+    height: 2rem;
+    background: linear-gradient(0deg, var(--color_back_section), transparent);
+    border: 1px solid var(--color_activated);
+    border-radius: 1rem;
+    transition: left 0.3s linear;
 }
+
+
 
 .title {
     width: 100%;
@@ -92,7 +96,7 @@ $sizeContainerMenuMobil: 35rem;
     font-family: var(--font-Title);
     color: var(--color_fontTitle);
     font-weight: 900;
-    border-bottom: 1px solid var(--color_activated);
+    border-bottom: 1px solid var(--color_backlight);
     //border-left: 1px solid var(--color_font);
     //background:  linear-gradient(90deg, var(--color_deactivated), #A7D12901);
     padding: 0.5rem 0 0 2rem;
@@ -110,6 +114,8 @@ $sizeContainerMenuMobil: 35rem;
     z-index: 6;
     @include media(tablet) {
         justify-items:  flex-start; 
+        padding-top: 4rem;
+        margin: 0rem auto; 
     }
     @include media(desktop-s) {
         width: 65%;
@@ -152,7 +158,7 @@ $sizeContainerMenuMobil: 35rem;
         justify-self: center;
         grid-column: 1 / span 2;
         grid-row: 2 / 3;
-        margin: 0rem auto;
+        margin: 1rem auto;
         border: 5px solid var(--color_activated);
         box-shadow: 1px 1px 10px 1px #000000;
         filter: grayscale(90%);
@@ -162,7 +168,8 @@ $sizeContainerMenuMobil: 35rem;
             width: 55%;
             min-width: 18rem;
             grid-column: 2 / 3;
-            grid-row: 2 / span 4;     
+            grid-row: 2 / span 4;  
+            margin: 5rem auto;   
         }
     }
     &__link--github {        
@@ -180,7 +187,7 @@ $sizeContainerMenuMobil: 35rem;
     }
     &__icon--github {
         width: 2.5rem;
-        
+        margin-left: 0.1rem;
     }
     &__link--linkedin {
         align-self: flex-start;
@@ -197,6 +204,7 @@ $sizeContainerMenuMobil: 35rem;
     }
     &__icon--linkedin {
         width: 2.5rem;
+        margin-left: 0.3rem;
     }    
 } 
 
@@ -323,16 +331,15 @@ $sizeContainerMenuMobil: 35rem;
     display: none;
     width: 100%;
     height: 100%;
-    padding: 1.2rem 0rem 0 0rem; 
-    text-align: center;
-    
-    font-size: 1rem;       
+    padding: 1rem 0rem 0 0rem; 
+    text-align: center;    
+    font-size: 0.85rem;       
     font-family: var(--font-General); 
-    font-weight: 500;
+    font-weight: 100;
     word-wrap: break-word;
     color: var(--color_font);
     background-color: var(--color_backlight);
-    border-left: 1px solid var(--color_font);
+    border-left: 1px solid var(--color_backdark);
     overflow: hidden;  
     cursor: pointer;
     &:hover {
@@ -346,7 +353,7 @@ $sizeContainerMenuMobil: 35rem;
         height: 100%;
         left: 0;
         top: -125%;
-        padding: 1.2rem 0 0 0;
+        padding: 1rem 0 0 0;
         background-color: var(--color_backdark);        
         border-bottom: 1px solid var(--color_activated);  
         color: var(--color_activated);       
@@ -363,11 +370,11 @@ $sizeContainerMenuMobil: 35rem;
     align-items: center;
     justify-items: center;
     row-gap: 0.5rem;
-    margin: 1rem 0 0 0;   
+    margin: 3rem 0 0 0;   
     background: var(--color_backdark);
     @include boxShadow();
     @include media(tablet) {
-        grid-template-rows: 0.7fr 2fr 2fr 2fr;   
+        grid-template-rows: 0.6fr 2fr 2fr 2fr;   
         grid-template-columns: repeat(5, 1fr);
         margin: 2rem 0 0 0; 
     }
@@ -414,7 +421,7 @@ $sizeContainerMenuMobil: 35rem;
         position: absolute;
         display: block;
         height: 2rem;
-        top: -3.3rem;
+        top: -2rem;
         right: 0;
         padding: 0.1rem 1rem 0 1rem;
         font-size: 1.3rem;
@@ -537,7 +544,7 @@ $sizeContainerMenuMobil: 35rem;
 .aboutme {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
-    margin: 4rem 0 0 0;  
+    margin: 4rem 0 3rem 0;  
     align-items: center;
     justify-content: center;
     &__description {
@@ -611,7 +618,7 @@ $sizeContainerMenuMobil: 35rem;
     flex-flow: row wrap;
     bottom: 0;
     width: 100%;
-    height: 4rem;
+    height: 3rem;
     background-color: var(--color_backdark);
     border-top: 1px solid var(--color_activated);
     z-index: 5;
@@ -665,41 +672,47 @@ $sizeContainerMenuMobil: 35rem;
     }
 }
 .link {
-    width: 3rem;
-    height: 3rem;
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.34rem;
     list-style:none ;
+    transition: right 0.2s linear;
     filter: invert(1);
 }
 .menumobil {
     position: absolute; 
     display: block;
-    width: 90vw;
+    width: 100%;
     height: 3.5rem;
-    top: -0.2rem;
-    left: calc(5vw);
-    background-color: var(--color_backdark);  
-    border: 3px solid var(--color_activated);
+    top: 0rem;
+    background-color: var(--color_backdark);
     align-items: end;
     @include media(tablet) {
         display: none;       
     }
-    &__links {           
+    &__links {         
+        position: relative;  
         display: flex;
         justify-content: space-around;
-        margin: 0.1rem 0 0 0;      
+        margin: 0.1rem 0 0 0;   
+        z-index: 2;  
     }
     &__links--home {
         background-image: url("/assets/icons/home-icon.svg");
         background-size: cover;
-        filter: invert(0);
+        filter: invert(0);        
+        right: 2.5rem;
     }
     &__links--skills {
         background-image: url("/assets/icons/skills-icon.svg");
         background-size: cover;
+        filter: brightness(0) invert(1); 
     }
     &__links--projects {
         background-image: url("/assets/icons/portfolio-icon.svg");
-        background-size: cover;
+        background-size: cover;        
+        filter: brightness(0) invert(1); 
         a {
             width: 100%;
             height: 100%;
@@ -708,26 +721,29 @@ $sizeContainerMenuMobil: 35rem;
     &__links--about {
         background-image: url("/assets/icons/about-icon.svg");
         background-size: cover;
+        filter: brightness(0) invert(1); 
     }
     &__links--contact {
         background-image: url("/assets/icons/contact-icon.svg");
         background-size: cover;
+        filter: brightness(0) invert(1); 
     }
     &__link--select {
         position: absolute;
-        width: 18vw;
-        height: 5rem;
-        top: -1.7rem;
-        left: -0.2rem;
-        font-weight: bold;
+        width: 18.5%;
+        height: 2.4rem;
+        top: 0.23rem;
+        left: 0.2rem;
+        font-weight: bolder;
         font-size: 0.80rem;
-        background-color: var(--color_activated);
-        box-shadow: 2px 2px 4px 1px var(--color_deactivated) inset;
-        border-radius: 0.5rem 0.5rem 0 0;
-        border: 3px solid var(--color_activated);
-        text-align: center;
-        padding: 0.5rem 0 0 0;
+        color: var(--color_backdark);
+        background: var(--color_activated);
+        border-radius: 1.2rem;
+        border: 1px solid var(--color_activated);
+        text-align: right;
+        padding: 0.7rem  0.75rem 0 0;
         transition: left 0.3s linear;
+        z-index: 1;
     }
 }
 
