@@ -8,6 +8,7 @@ body {
   background: var(--color_backmedium);
   font-size: 100%;
   font-family: var(--font-General);
+  font-display: auto;
 }
 body::-webkit-scrollbar {
   width: 13px;

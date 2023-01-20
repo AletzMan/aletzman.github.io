@@ -24,7 +24,7 @@ var menuMobil = document.querySelectorAll(".link");
 selectItemMenu.style.left = "0px";
 selectItemMenu.style.top = "0px";
 var textPresentation = ['Software Developer', 'Front-End Developer', 'Electrical Design'];
-var numbertags = 35;
+var numbertags = 45;
 var containerTags = [];
 var nameTags = ["<header>", "<section>", "<footer>", "<nav>", "<aside>", "<img>", "<button>", "<input>", "<picture>", "<table>", "<meta>", "<select>", "<span>", "<textarea>", "<video>"];
 var nameLogos = ["html", "css", "javascript", "sass", "pug", "git", "github", "mysql", "csharp", "netcore", "xamarin", "xaml", "c", "vscode", "vs", "labview", "teststand", "cvi"];
@@ -40,11 +40,10 @@ var mobileDetect = function mobileDetect() {
 };
 
 onload = function onload() {
+  CreateLogoSkill(0);
   CreateProject();
   initAnimation();
   scroll(0, 0);
-  CreateLogoSkill(0);
-  ac;
 };
 
 for (var index = 0; index < menuDesktop.length; index++) {
@@ -65,8 +64,8 @@ for (var index = 0; index < menuDesktop.length; index++) {
 }
 
 setTimeout(function () {
-  var time = 100;
-  var intervalPresentetion = setInterval(LoadPresentation, time);
+  var time;
+  var intervalPresentetion = setInterval(LoadPresentation, 100);
   var numLetter = 0;
   var reverse = false;
   var textReverse = '';
@@ -78,6 +77,7 @@ setTimeout(function () {
       textReverse = textPresentation[textNumber];
       numLetter += 1;
     } else {
+      time = new Date().getTime();
       reverse = true;
     }
 
@@ -139,7 +139,7 @@ function () {
       });
       var directionX = 0;
       var directionY = 0;
-      sectionHome.addEventListener('mouseup', function (e) {
+      body.addEventListener('mouseup', function (e) {
         if (_this.initPosMouseX != 0) {
           if (_this.initPosMouseX - e.clientX > 0) {
             directionX = -10;
@@ -190,7 +190,7 @@ var initAnimation = function initAnimation() {
 var createBubbleTags = function createBubbleTags() {
   for (var _index2 = 0; _index2 < numbertags; _index2++) {
     var positionTagX = GetRandomNumber(50, window.innerWidth - 50);
-    var positionTagY = GetRandomNumber(100, window.innerHeight - 20);
+    var positionTagY = GetRandomNumber(100, body.getBoundingClientRect().height - 20);
     bubblesContainer.push(new TagBubble(positionTagX, positionTagY, GetRandomNumber(-20, 70), GetRandomNumber(-20, 70), GetRandomNumber(1, 10)));
   }
 
@@ -269,7 +269,7 @@ var borderCollisionDetection = function borderCollisionDetection() {
   var collisionLimitXLeft = 1;
   var collisionLimitXRight = window.outerWidth - 30;
   var collisionLimitYTop = 100;
-  var collisionLimitYBottom = window.innerHeight - 70;
+  var collisionLimitYBottom = body.getBoundingClientRect().height - 70;
   var speedReset = 0.95;
   var bubble;
 
@@ -311,6 +311,11 @@ function GetRandomNumberFloat(min, max) {
 
 
 var sourceLogos = "./assets/icons/";
+var selectSkills = document.querySelector('.logos__select');
+selectSkills.addEventListener('change', function (e) {
+  console.log(e.target.value);
+  CreateLogoSkill(e.target.value);
+});
 
 var _loop = function _loop(_index4) {
   typeSkills[_index4].addEventListener("click", function (e) {
@@ -322,10 +327,10 @@ for (var _index4 = 0; _index4 < typeSkills.length; _index4++) {
   _loop(_index4);
 }
 
-var CreateLogoSkill = function CreateLogoSkill(numberSkill) {
-  var SKILLS = [["html", "css", "javascript", "pug", "sass", "git", "github", "vscode"], ["csharp", "netcore", "xaml", "git", "github", "vs"], ["csharp", "netcore", "xamarin", "xaml", "vs", "git", "github"], ["c", "csharp", "xaml", "labview", "siemens", "git", "github"], ["vscode", "vs", "git", "labview", "teststand", "cvi", "tiaportal"]];
-  var SKILLSNAME = [["html", "css", "javascript", "pug", "sass", "git", "git hub", "visual studio code"], ["c#", "netcore", "xaml", "git", "github", "visual studio"], ["c#", "netcore", "xamarin forms", "xaml", "visual studio", "git", "github"], ["c", "c#", "xaml", "labview (Graphic)", "scl, kop", "git", "github"], ["visual studio code", "visual studio", "git", "labview", "teststand", "lab/windows cvi", "tia portal"]];
+var SKILLS = [["html", "css", "javascript", "pug", "sass", "git", "github", "vscode"], ["csharp", "netcore", "xaml", "git", "github", "vs"], ["csharp", "netcore", "xamarin", "xaml", "vs", "git", "github"], ["c", "csharp", "xaml", "labview", "siemens", "git", "github"], ["vscode", "vs", "git", "labview", "teststand", "cvi", "tiaportal"]];
+var SKILLSNAME = [["html", "css", "javascript", "pug", "sass", "git", "git hub", "visual studio code"], ["c#", "netcore", "xaml", "git", "github", "visual studio"], ["c#", "netcore", "xamarin forms", "xaml", "visual studio", "git", "github"], ["c", "c#", "xaml", "labview (Graphic)", "scl, kop", "git", "github"], ["visual studio code", "visual studio", "git", "labview", "teststand", "lab/windows cvi", "tia portal"]];
 
+var CreateLogoSkill = function CreateLogoSkill(numberSkill) {
   do {
     containerSkills.removeChild(containerSkills.lastChild);
   } while (containerSkills.lastChild.className === "logos__name");
@@ -341,6 +346,7 @@ var CreateLogoSkill = function CreateLogoSkill(numberSkill) {
     var newLogoImage = document.createElement("img");
     newLogoImage.classList = "logo";
     newLogoImage.src = sourceLogos + SKILLS[numberSkill][_index5] + "-logo.svg";
+    newLogoImage.alt = "logo " + SKILLS[numberSkill][_index5];
     newLogoBubble.appendChild(newLogoImage);
     var newLogoName = document.createElement("span");
     newLogoName.textContent = SKILLSNAME[numberSkill][_index5];
@@ -380,10 +386,20 @@ var EditProjects = function EditProjects() {
     projectsTitle[_index7].innerHTML = Title[_index7];
 
     Technologies[_index7].forEach(function (namelogo) {
+      var newContainer = document.createElement("div");
+      newContainer.classList = "project__technologies--container";
+
+      projectsTechnologies[_index7].appendChild(newContainer);
+
       var newImgTech = document.createElement("img");
       newImgTech.src = sourceLogos + namelogo + "-logo.svg";
-
-      projectsTechnologies[_index7].appendChild(newImgTech);
+      newImgTech.alt = "logo" + namelogo;
+      newImgTech.classList = "project__technologies--image";
+      newContainer.appendChild(newImgTech);
+      var newImgDescription = document.createElement("span");
+      newImgDescription.textContent = namelogo;
+      newImgDescription.classList = "project__technologies--label";
+      newContainer.appendChild(newImgDescription);
     });
 
     projectsImage[_index7].src = sourcePhotos + _index7 + ".jpg";
@@ -483,17 +499,17 @@ document.addEventListener("scroll", function () {
     var designMobil = window.getComputedStyle(menuMobilContainer, null).getPropertyValue("display") == "none" ? false : true;
 
     var _loop4 = function _loop4(_index9) {
-      if (sections[_index9].getBoundingClientRect().y < 300 && sections[_index9].getBoundingClientRect().y > -20) {
+      if (sections[_index9].getBoundingClientRect().y < 350 && sections[_index9].getBoundingClientRect().y > -20) {
         if (designMobil) {
-          positionMenuselected = menuMobilContainer.getBoundingClientRect().width / 16 / 5 * (_index9 + 1) - menuMobilSelect.getBoundingClientRect().width / 16 - 0.4;
+          positionMenuselected = menuMobilContainer.getBoundingClientRect().width / 16 / 5 * (_index9 + 1) - menuMobilSelect.getBoundingClientRect().width / 16 - 0;
           menuMobilSelect.style.left = "".concat(positionMenuselected, "rem");
           setTimeout(function () {
             menuMobil.forEach(function (section) {
               section.style.filter = "invert(1)";
-              section.style.right = "0";
+              section.style.top = "0.65rem";
             });
             menuMobil[_index9].style.filter = "brightness(1)";
-            menuMobil[_index9].style.right = "2.5rem";
+            menuMobil[_index9].style.top = "0rem";
             menuMobilSelect.innerText = nameTagMenu[_index9];
           }, 200);
         } else {

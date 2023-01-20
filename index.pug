@@ -18,6 +18,9 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="theme-color" content="#317EFB")
+        meta(name="portfolio software developer")
+        link(rel="apple-touch-icon" href="/example.png")
         link(rel="stylesheet", href="./styles/main_style.min.css")
         link(rel="shortcut icon" href="./assets/logos/logo-tab.svg")
         script(defer src="./scripts/main_script.prod.js") 
@@ -41,7 +44,7 @@ html(lang="en")
                 p(class="name") Alejandro.
                 span(class="description__profesion")
                 span(class="home__idea") "Turning ideas and desing, into code"        
-                img(class="home__photo" src="./assets/photos/my_photo.jpg" alt="photo of Alejandro Garcia" loading="lazy" draggable="false")
+                img(class="home__photo" src="./assets/photos/my_photo.webp" alt="photo of Alejandro Garcia" draggable="false")
                 a(class="home__link--github networks" href=github title="Go To GitHub" target="_blank" rel="noopener noreferrer")
                     img(class="home__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false")
                     span(class="github__name networks__name") GitHub
@@ -52,11 +55,11 @@ html(lang="en")
             h2(class="skills__title title") SKILLS
             div(class="skills__logos logos")
                 select(class="logos__select") 
-                    option(value="Web") Web
-                    option(value="Web") Mobil
-                    option(value="Web") Desktop
-                    option(value="Web") Test and Measurement
-                    option(value="Web") Development Platforms
+                    option(value="0") Web
+                    option(value="1") Mobil
+                    option(value="2") Desktop
+                    option(value="3") Test and Measurement
+                    option(value="4") Development Platforms
                 input(type ="radio" name="skills" id="webdev" class="logos--webdev technologies" checked) 
                 label(for="webdev" class="label__tech" name="Web") Web
                 input(type ="radio" name="skills" id="mobil" class="logos--mobil technologies") 
@@ -74,14 +77,9 @@ html(lang="en")
                 div(class="project")
                     h3(class="project__title") Paint Board
                     div(class="project__technologies")
-                        //img( src="./assets/icons/html-logo.svg" alt="photo of project" loading="lazy" draggable="false")
-                        //img( src="./assets/icons/css-logo.svg" alt="photo of project" loading="lazy" draggable="false")
-                        //img( src="./assets/icons/javascript-logo.svg" alt="photo of project" loading="lazy" draggable="false")
-                        //img( src="./assets/icons/pug-logo.svg" alt="photo of project" loading="lazy" draggable="false")
-                        //img( src="./assets/icons/sass-logo.svg" alt="photo of project" loading="lazy" draggable="false")
-                    img(class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false")
+                    img(class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false" aria-label="zoom")
                     div(class="project__options")
-                        button(class="project__options--zoom networks")
+                        button(class="project__options--zoom networks" aria-labelledby="image zoom" aria-label="zoom" title="image project zoom")
                         a(class="project__options--repository networks" href=github title="Go To GitHub repository project" target="_blank" rel="noopener noreferrer")
                             img(class="project__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of GitHub" loading="lazy" draggable="false")
                         a(class="project__options--linkpreview networks"  href=linkedin title="Go To Preview Project" target="_blank" rel="noopener noreferrer")   

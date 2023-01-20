@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#317EFB">
+    <meta name="portfolio software developer">
+    <link rel="apple-touch-icon" href="/example.png">
     <link rel="stylesheet" href="./styles/main_style.min.css">
     <link rel="shortcut icon" href="./assets/logos/logo-tab.svg">
     <script defer src="./scripts/main_script.prod.js"> </script>
@@ -27,18 +30,18 @@
       <h2 class="home__title title">HOME</h2>
       <div class="home__container">
         <p class="description__name">Hey, <br>My name is</p>
-        <p class="name">Alejandro.</p><span class="description__profesion"></span><span class="home__idea">"Turning ideas and desing, into code"        </span><img class="home__photo" src="./assets/photos/my_photo.jpg" alt="photo of Alejandro Garcia" loading="lazy" draggable="false"><a class="home__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer"><img class="home__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false"><span class="github__name networks__name">GitHub</span></a><a class="home__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  <img class="home__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="photo of linkedin from  Alejandro Garcia" loading="lazy" draggable="false"><span class="linkedin__name networks__name">Linkedin</span></a>
+        <p class="name">Alejandro.</p><span class="description__profesion"></span><span class="home__idea">"Turning ideas and desing, into code"        </span><img class="home__photo" src="./assets/photos/my_photo.webp" alt="photo of Alejandro Garcia" draggable="false"><a class="home__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer"><img class="home__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false"><span class="github__name networks__name">GitHub</span></a><a class="home__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  <img class="home__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="photo of linkedin from  Alejandro Garcia" loading="lazy" draggable="false"><span class="linkedin__name networks__name">Linkedin</span></a>
       </div>
     </section>
     <section class="skills section" id="section__skills">
       <h2 class="skills__title title">SKILLS</h2>
       <div class="skills__logos logos">
         <select class="logos__select"> 
-          <option value="Web">Web</option>
-          <option value="Web">Mobil</option>
-          <option value="Web">Desktop</option>
-          <option value="Web">Test and Measurement</option>
-          <option value="Web">Development Platforms</option>
+          <option value="0">Web</option>
+          <option value="1">Mobil</option>
+          <option value="2">Desktop</option>
+          <option value="3">Test and Measurement</option>
+          <option value="4">Development Platforms</option>
         </select>
         <input class="logos--webdev technologies" type="radio" name="skills" id="webdev" checked>
         <label class="label__tech" for="webdev" name="Web">Web</label>
@@ -58,15 +61,9 @@
       <div class="projects__container">
         <div class="project">
           <h3 class="project__title">Paint Board</h3>
-          <div class="project__technologies">
-            <!--img( src="./assets/icons/html-logo.svg" alt="photo of project" loading="lazy" draggable="false")-->
-            <!--img( src="./assets/icons/css-logo.svg" alt="photo of project" loading="lazy" draggable="false")-->
-            <!--img( src="./assets/icons/javascript-logo.svg" alt="photo of project" loading="lazy" draggable="false")-->
-            <!--img( src="./assets/icons/pug-logo.svg" alt="photo of project" loading="lazy" draggable="false")-->
-            <!--img( src="./assets/icons/sass-logo.svg" alt="photo of project" loading="lazy" draggable="false")-->
-          </div><img class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false">
+          <div class="project__technologies"></div><img class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false" aria-label="zoom">
           <div class="project__options">
-            <button class="project__options--zoom networks"></button><a class="project__options--repository networks" href="https://github.com/AletzMan" title="Go To GitHub repository project" target="_blank" rel="noopener noreferrer"><img class="project__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of GitHub" loading="lazy" draggable="false"></a><a class="project__options--linkpreview networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Preview Project" target="_blank" rel="noopener noreferrer">  <img class="project__icon--linkedin networks__logo" src="../assets/icons/preview-icon.svg" alt="Project" loading="lazy" draggable="false"></a>
+            <button class="project__options--zoom networks" aria-labelledby="image zoom" aria-label="zoom" title="image project zoom"></button><a class="project__options--repository networks" href="https://github.com/AletzMan" title="Go To GitHub repository project" target="_blank" rel="noopener noreferrer"><img class="project__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of GitHub" loading="lazy" draggable="false"></a><a class="project__options--linkpreview networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Preview Project" target="_blank" rel="noopener noreferrer">  <img class="project__icon--linkedin networks__logo" src="../assets/icons/preview-icon.svg" alt="Project" loading="lazy" draggable="false"></a>
           </div>
         </div>
       </div>

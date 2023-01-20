@@ -19,7 +19,7 @@ selectItemMenu.style.left = "0px";
 selectItemMenu.style.top = "0px";
 
 const textPresentation = ['Software Developer', 'Front-End Developer', 'Electrical Design'];
-const numbertags = 35;
+const numbertags = 45;
 let containerTags = [];
 const nameTags = ["<header>", "<section>", "<footer>", "<nav>", "<aside>", "<img>", "<button>", "<input>", "<picture>", "<table>", "<meta>", "<select>", "<span>", "<textarea>", "<video>"];
 const nameLogos = ["html", "css", "javascript", "sass", "pug", "git", "github", "mysql", "csharp", "netcore", "xamarin", "xaml", "c", "vscode", "vs", "labview", "teststand", "cvi"];
@@ -32,10 +32,11 @@ const mobileDetect = () => {
 };
 
 onload = () => {
+	CreateLogoSkill(0);
 	CreateProject();
 	initAnimation();
 	scroll(0, 0);
-	CreateLogoSkill(0); ac
+
 }
 
 
@@ -57,8 +58,8 @@ for (let index = 0; index < menuDesktop.length; index++) {
 }
 
 setTimeout(() => {
-	let time = 100;
-	let intervalPresentetion = setInterval(LoadPresentation, time);
+	let time;
+	let intervalPresentetion = setInterval(LoadPresentation, 100);
 	let numLetter = 0;
 	let reverse = false;
 	let textReverse = '';
@@ -69,6 +70,7 @@ setTimeout(() => {
 			textReverse = textPresentation[textNumber];
 			numLetter += 1;
 		} else {
+			time = new Date().getTime();
 			reverse = true;
 		}
 
@@ -81,6 +83,7 @@ setTimeout(() => {
 				textNumber += 1;
 				if (textNumber > textPresentation.length - 1) {
 					textNumber = 0;
+
 				}
 			}
 		}
@@ -123,7 +126,7 @@ class TagBubble {
 		});
 		let directionX = 0;
 		let directionY = 0;
-		sectionHome.addEventListener('mouseup', (e) => {
+		body.addEventListener('mouseup', (e) => {
 			if (this.initPosMouseX != 0) {
 				if (this.initPosMouseX - e.clientX > 0) {
 					directionX = -10;
@@ -163,7 +166,7 @@ const initAnimation = () => {
 const createBubbleTags = () => {
 	for (let index = 0; index < numbertags; index++) {
 		let positionTagX = GetRandomNumber(50, window.innerWidth - 50);
-		let positionTagY = GetRandomNumber(100, window.innerHeight - 20);
+		let positionTagY = GetRandomNumber(100, body.getBoundingClientRect().height - 20);
 		bubblesContainer.push(new TagBubble(positionTagX, positionTagY, GetRandomNumber(-20, 70), GetRandomNumber(-20, 70), GetRandomNumber(1, 10)));
 	}
 	for (let i = 0; i < bubblesContainer.length; i++) {
@@ -226,12 +229,12 @@ const borderCollisionDetection = () => {
 	const collisionLimitXLeft = (1);
 	const collisionLimitXRight = window.outerWidth - 30;
 	const collisionLimitYTop = 100;
-	const collisionLimitYBottom = window.innerHeight - 70;
-
+	const collisionLimitYBottom = body.getBoundingClientRect().height - 70;
 	const speedReset = 0.95;
 	let bubble;
 	for (let i = 0; i < bubblesContainer.length; i++) {
 		bubble = bubblesContainer[i];
+
 
 		if (bubble.posX < collisionLimitXLeft) {
 			bubble.speedX = Math.abs(bubble.speedX) * speedReset;
@@ -270,28 +273,35 @@ function GetRandomNumberFloat(min, max) {
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 const sourceLogos = "./assets/icons/";
+const selectSkills = document.querySelector('.logos__select');
+
+selectSkills.addEventListener('change', (e) => {
+		console.log(e.target.value)
+		CreateLogoSkill(e.target.value);
+})
+
 
 for (let index = 0; index < typeSkills.length; index++) {
 	typeSkills[index].addEventListener("click", (e) => {
 		CreateLogoSkill(index);
 	})
 }
-
+const SKILLS = [
+	["html", "css", "javascript", "pug", "sass", "git", "github", "vscode"],
+	["csharp", "netcore", "xaml", "git", "github", "vs"],
+	["csharp", "netcore", "xamarin", "xaml", "vs", "git", "github"],
+	["c", "csharp", "xaml", "labview", "siemens", "git", "github"],
+	["vscode", "vs", "git", "labview", "teststand", "cvi", "tiaportal"]
+]
+const SKILLSNAME = [
+	["html", "css", "javascript", "pug", "sass", "git", "git hub", "visual studio code"],
+	["c#", "netcore", "xaml", "git", "github", "visual studio"],
+	["c#", "netcore", "xamarin forms", "xaml", "visual studio", "git", "github"],
+	["c", "c#", "xaml", `labview (Graphic)`, "scl, kop", "git", "github"],
+	["visual studio code", "visual studio", "git", "labview", "teststand", "lab/windows cvi", "tia portal"]
+]
 const CreateLogoSkill = (numberSkill) => {
-	const SKILLS = [
-		["html", "css", "javascript", "pug", "sass", "git", "github", "vscode"],
-		["csharp", "netcore", "xaml", "git", "github", "vs"],
-		["csharp", "netcore", "xamarin", "xaml", "vs", "git", "github"],
-		["c", "csharp", "xaml", "labview", "siemens", "git", "github"],
-		["vscode", "vs", "git", "labview", "teststand", "cvi", "tiaportal"]
-	]
-	const SKILLSNAME = [
-		["html", "css", "javascript", "pug", "sass", "git", "git hub", "visual studio code"],
-		["c#", "netcore", "xaml", "git", "github", "visual studio"],
-		["c#", "netcore", "xamarin forms", "xaml", "visual studio", "git", "github"],
-		["c", "c#", "xaml", `labview (Graphic)`, "scl, kop", "git", "github"],
-		["visual studio code", "visual studio", "git", "labview", "teststand", "lab/windows cvi", "tia portal"]
-	]
+
 
 	do {
 		containerSkills.removeChild(containerSkills.lastChild);
@@ -308,6 +318,7 @@ const CreateLogoSkill = (numberSkill) => {
 		const newLogoImage = document.createElement("img");
 		newLogoImage.classList = "logo";
 		newLogoImage.src = sourceLogos + SKILLS[numberSkill][index] + "-logo.svg";
+		newLogoImage.alt = "logo " + SKILLS[numberSkill][index];
 		newLogoBubble.appendChild(newLogoImage);
 		const newLogoName = document.createElement("span");
 		newLogoName.textContent = SKILLSNAME[numberSkill][index];
@@ -362,9 +373,18 @@ const EditProjects = () => {
 	for (let index = 0; index < projects.length; index++) {
 		projectsTitle[index].innerHTML = Title[index];
 		Technologies[index].forEach(namelogo => {
+			const newContainer = document.createElement("div");
+			newContainer.classList = "project__technologies--container";
+			projectsTechnologies[index].appendChild(newContainer);
 			const newImgTech = document.createElement("img");
 			newImgTech.src = sourceLogos + namelogo + "-logo.svg";
-			projectsTechnologies[index].appendChild(newImgTech);
+			newImgTech.alt = "logo" + namelogo;
+			newImgTech.classList = "project__technologies--image";
+			newContainer.appendChild(newImgTech);
+			const newImgDescription = document.createElement("span");
+			newImgDescription.textContent = namelogo;
+			newImgDescription.classList = "project__technologies--label";
+			newContainer.appendChild(newImgDescription);
 		});
 		projectsImage[index].src = sourcePhotos + index + ".jpg";
 		projectsRepository[index].href = Repositories[index];
@@ -468,17 +488,17 @@ document.addEventListener("scroll", () => {
 		let designMobil = window.getComputedStyle(menuMobilContainer, null).getPropertyValue("display") == "none" ? false : true;
 
 		for (let index = 0; index < sections.length; index++) {
-			if (sections[index].getBoundingClientRect().y < 300 && sections[index].getBoundingClientRect().y > -20) {
+			if (sections[index].getBoundingClientRect().y < 350 && sections[index].getBoundingClientRect().y > -20) {
 				if (designMobil) {
-					positionMenuselected = ((menuMobilContainer.getBoundingClientRect().width / 16) / 5 * (index + 1)) - (menuMobilSelect.getBoundingClientRect().width / 16) - 0.4;
+					positionMenuselected = ((menuMobilContainer.getBoundingClientRect().width / 16) / 5 * (index + 1)) - (menuMobilSelect.getBoundingClientRect().width / 16) - 0;
 					menuMobilSelect.style.left = `${positionMenuselected}rem`;
 					setTimeout(() => {
 						menuMobil.forEach(section => {
 							section.style.filter = "invert(1)";
-							section.style.right = "0";
+							section.style.top = "0.65rem";
 						});
 						menuMobil[index].style.filter = "brightness(1)";
-						menuMobil[index].style.right = "2.5rem";
+						menuMobil[index].style.top = "0rem";
 						menuMobilSelect.innerText = nameTagMenu[index];
 					}, 200);
 				} else {
