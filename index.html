@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#317EFB">
-    <meta name="portfolio software developer">
+    <meta name="portfolio software developer portafolio javascript">
     <link rel="apple-touch-icon" href="/example.png">
     <link rel="stylesheet" href="./styles/main_style.min.css">
     <link rel="shortcut icon" href="./assets/logos/logo-tab.svg">
@@ -14,82 +14,178 @@
   </head>
   <body> 
     <header class="header">
-      <div class="header__container"><img class="header__logo" src="./assets/logos/logo-large.svg" alt="logo Alejandro Garcia" loading="lazy" draggable="false">
+      <nav class="header__container"><a class="header__link" href="#" title="Go To Home"><img class="header__logo" src="./assets/logos/logo-large.svg" alt="logo Alejandro Garcia" loading="lazy" draggable="false"></a>
         <ul class="header__menu menu">
-          <li class="menu__list menu__list--home"><a class="menu__list--link" href="#section__home" title="Go to Home" rel="noopener noreferrer">HOME</a></li>
-          <li class="menu__list menu__list--skills"><a class="menu__list--link" href="#section__skills" title="Go to Skills" rel="noopener noreferrer"> SKILLS</a></li>
-          <li class="menu__list menu__list--projects"><a class="menu__list--link" href="#section__projects" title="Go to Projects" rel="noopener noreferrer"> PROJECTS</a></li>
-          <li class="menu__list menu__list--about"><a class="menu__list--link" href="#section__about" title="Go to About Me" rel="noopener noreferrer"> ABOUT ME</a></li>
-          <li class="menu__list menu__list--contact"><a class="menu__list--link" href="#section__contact" title="Go to Contact" rel="noopener noreferrer"> CONTACT</a></li>
-          <div class="menu__selection"></div>
+          <li class="menu__list menu__list--home"><a class="menu__list--link" href="#section__home" title="Go to Home" rel="noopener noreferrer">Home</a></li>
+          <li class="menu__list menu__list--skills"><a class="menu__list--link" href="#section__skills" title="Go to Skills" rel="noopener noreferrer"> Skills</a></li>
+          <li class="menu__list menu__list--projects"><a class="menu__list--link" href="#section__projects" title="Go to Projects" rel="noopener noreferrer"> Projects</a></li>
+          <li class="menu__list menu__list--about"><a class="menu__list--link" href="#section__about" title="Go to About Me" rel="noopener noreferrer"> About me</a></li>
+          <li class="menu__list menu__list--contact"><a class="menu__list--link" href="#section__contact" title="Go to Contact" rel="noopener noreferrer"> Contact</a></li>
+          <li class="menu__selection"></li>
         </ul>
+      </nav>
+      <div class="header__language language">               
+        <input class="language__check" type="checkbox">
+        <div class="language__button"><img class="language__icon" src="./assets/icons/language-icon.svg" alt="icon of language"></div>
       </div>
     </header>
     <div class="menumobil__content"></div>
+    <div class="perspective">
+      <div class="perspective__container">
+        <div class="perspective__left"></div>
+        <div class="perspective__down"></div>
+        <div class="perspective__right"></div>
+        <div class="perspective__back"></div>
+        <div class="perspective__up"></div>
+        <div class="perspective__lamp">
+          <div class="perspective__lamp--wire"></div>
+          <div class="perspective__lamp--circle"></div>
+          <div class="perspective__lamp--conect"></div>
+          <div class="perspective__lamp--base"></div>
+          <div class="perspective__lamp--baseellipse"></div>
+          <div class="perspective__lamp--ellipse">
+            <svg class="perspective__lamp--light">
+              <polygon class="st0" points="600,650 0,650 260,50 340,50 "></polygon>
+              <defs>
+                <linearGradient id="grad" gradientTransform="rotate(90)">
+                  <stop offset="0" stop-color="#00ACB455"></stop>
+                  <stop offset="1" stop-color="transparent"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="perspective__landscape landscape">
+          <div class="landscape__window">         
+            <p class="landscape__window--text"></p>
+          </div>
+        </div>
+      </div>
+    </div>
     <section class="home section" id="section__home">
       <h2 class="home__title title">HOME</h2>
       <div class="home__container">
-        <p class="description__name">Hey, <br>My name is</p>
-        <p class="name">Alejandro.</p><span class="description__profesion"></span><span class="home__idea">"Turning ideas and desing, into code"        </span><img class="home__photo" src="./assets/photos/my_photo.webp" alt="photo of Alejandro Garcia" draggable="false"><a class="home__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer"><img class="home__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false"><span class="github__name networks__name">GitHub</span></a><a class="home__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  <img class="home__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="photo of linkedin from  Alejandro Garcia" loading="lazy" draggable="false"><span class="linkedin__name networks__name">Linkedin</span></a>
+        <p class="home__greetings">Hey, <br>My name is</p>
+        <p class="home__name">Alejandro.</p><span class="home__slogan">"Turning ideas and desing, into code"        </span><img class="home__photo" src="./assets/photos/my_photo.webp" alt="photo of Alejandro Garcia" draggable="false"><a class="home__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer">
+          <svg class="home__icon--github networks__logo" viewBox="0 0 2500 2432">
+            <path class="networks__path" d="M1245.2,0C557.6,0,0,557.5,0,1245.2c0,550.2,356.8,1016.9,851.5,1181.5c62.2,11.5,85.1-27,85.1-59.9 c0-29.7-1.2-127.8-1.7-231.8c-346.4,75.3-419.5-146.9-419.5-146.9c-56.6-143.9-138.3-182.2-138.3-182.2c-113-77.3,8.5-75.7,8.5-75.7 c125,8.8,190.9,128.3,190.9,128.3c111.1,190.4,291.3,135.3,362.3,103.5c11.2-80.5,43.4-135.4,79.1-166.5 c-276.6-31.5-567.3-138.3-567.3-615.4c0-135.9,48.6-247,128.3-334.2c-12.9-31.4-55.5-158,12.1-329.5c0,0,104.6-33.5,342.5,127.6 c99.3-27.6,205.8-41.4,311.7-41.9c105.8,0.5,212.4,14.3,311.9,41.9c237.7-161.1,342.1-127.6,342.1-127.6 c67.8,171.5,25.1,298.2,12.2,329.5c79.8,87.2,128.1,198.3,128.1,334.2c0,478.2-291.3,583.6-568.6,614.4 c44.7,38.6,84.5,114.4,84.5,230.6c0,166.6-1.4,300.7-1.4,341.7c0,33.1,22.4,72,85.5,59.7c494.5-164.8,850.8-631.4,850.8-1181.4 C2490.3,557.5,1932.8,0,1245.2,0"></path>
+          </svg><span class="github__name networks__name">GitHub</span></a><a class="home__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  
+          <svg class="home__icon--linkedin networks__logo" viewBox="0 0 2490 2500">
+            <path class="networks__path" d="M2306,5H184C82.4,5,0,84.9,0,183.4v2133.3c0,98.5,82.4,178.3,184,178.3h2122c101.6,0,184-79.8,184-178.3V183.4 C2490,84.9,2407.6,5,2306,5z M756.7,2088.8H384.1v-1121h372.6V2088.8z M570.5,814.8h-2.4c-125.1,0-205.9-86.1-205.9-193.7 c0-110,83.3-193.7,210.8-193.7c127.4,0,205.9,83.7,208.3,193.7C781.3,728.7,700.4,814.8,570.5,814.8z M2100.3,2088.7h-372.6v-599.6 c0-150.7-53.9-253.5-188.7-253.5c-103,0-164.3,69.3-191.2,136.3c-9.9,23.9-12.3,57.4-12.3,90.9v626H962.9c0,0,4.9-1015.8,0-1121 h372.7v158.6c49.6-76.4,138.2-184.9,335.8-184.9c245.1,0,428.9,160.2,428.9,504.5V2088.7z"></path>
+          </svg><span class="linkedin__name networks__name">Linkedin</span></a>
       </div>
     </section>
     <section class="skills section" id="section__skills">
       <h2 class="skills__title title">SKILLS</h2>
       <div class="skills__logos logos">
-        <select class="logos__select"> 
+        <select class="skills__select"> 
           <option value="0">Web</option>
           <option value="1">Mobil</option>
           <option value="2">Desktop</option>
-          <option value="3">Test and Measurement</option>
-          <option value="4">Development Platforms</option>
+          <option value="3">Test & Measurement</option>
+          <option value="4">Tools & Platforms</option>
         </select>
-        <input class="logos--webdev technologies" type="radio" name="skills" id="webdev" checked>
+        <input class="skills--webdev technologies" type="radio" name="skills" id="webdev" checked>
         <label class="label__tech" for="webdev" name="Web">Web</label>
-        <input class="logos--mobil technologies" type="radio" name="skills" id="mobil">
+        <input class="skills--mobil technologies" type="radio" name="skills" id="mobil">
         <label class="label__tech" for="mobil" name="Mobil">Mobil</label>
-        <input class="logos--desktop technologies" type="radio" name="skills" id="desktop">
+        <input class="skills--desktop technologies" type="radio" name="skills" id="desktop">
         <label class="label__tech" for="desktop" name="Desktop">Desktop</label>
-        <input class="logos--test technologies" type="radio" name="skills" id="test">
-        <label class="label__tech" for="test" name="Test and Measurement">Test and Measurement</label>
-        <input class="logos--platforms technologies" type="radio" name="skills" id="platforms">
-        <label class="label__tech" for="platforms" name="Development platforms">Development Platforms</label>
-        <!--+createLogosImages                -->
+        <input class="skills--test technologies" type="radio" name="skills" id="test">
+        <label class="label__tech" for="test" name="Test &amp; Measurement">Test & Measurement</label>
+        <input class="skills--platforms technologies" type="radio" name="skills" id="platforms">
+        <label class="label__tech" for="platforms" name="Tools &amp; Platforms">Tools & Platforms                </label>
       </div>
     </section>
     <section class="projects section" id="section__projects">
       <h2 class="projects__title title">PROJECTS</h2>
       <div class="projects__container">
         <div class="project">
-          <h3 class="project__title">Paint Board</h3>
           <div class="project__technologies"></div><img class="project__image" src="./assets/photos/project_1.jpg" alt="photo of project" loading="lazy" draggable="false" aria-label="zoom">
-          <div class="project__options">
-            <button class="project__options--zoom networks" aria-labelledby="image zoom" aria-label="zoom" title="image project zoom"></button><a class="project__options--repository networks" href="https://github.com/AletzMan" title="Go To GitHub repository project" target="_blank" rel="noopener noreferrer"><img class="project__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of GitHub" loading="lazy" draggable="false"></a><a class="project__options--linkpreview networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Preview Project" target="_blank" rel="noopener noreferrer">  <img class="project__icon--linkedin networks__logo" src="../assets/icons/preview-icon.svg" alt="Project" loading="lazy" draggable="false"></a>
+          <div class="project__cortain">
+            <div class="project__cortain--one">PROJ</div>
+            <div class="project__cortain--two">ECT 1</div>
           </div>
+          <div class="project__options">
+            <button class="project__options--zoom networks" aria-labelledby="image zoom" aria-label="zoom" title="image project zoom"></button><a class="project__options--repository networks" href="https://github.com/AletzMan" title="Go To GitHub repository project" target="_blank" rel="noopener noreferrer">
+              <svg class="home__icon--github networks__logo" viewBox="0 0 2500 2432">
+                <path class="networks__path" d="M1245.2,0C557.6,0,0,557.5,0,1245.2c0,550.2,356.8,1016.9,851.5,1181.5c62.2,11.5,85.1-27,85.1-59.9 c0-29.7-1.2-127.8-1.7-231.8c-346.4,75.3-419.5-146.9-419.5-146.9c-56.6-143.9-138.3-182.2-138.3-182.2c-113-77.3,8.5-75.7,8.5-75.7 c125,8.8,190.9,128.3,190.9,128.3c111.1,190.4,291.3,135.3,362.3,103.5c11.2-80.5,43.4-135.4,79.1-166.5 c-276.6-31.5-567.3-138.3-567.3-615.4c0-135.9,48.6-247,128.3-334.2c-12.9-31.4-55.5-158,12.1-329.5c0,0,104.6-33.5,342.5,127.6 c99.3-27.6,205.8-41.4,311.7-41.9c105.8,0.5,212.4,14.3,311.9,41.9c237.7-161.1,342.1-127.6,342.1-127.6 c67.8,171.5,25.1,298.2,12.2,329.5c79.8,87.2,128.1,198.3,128.1,334.2c0,478.2-291.3,583.6-568.6,614.4 c44.7,38.6,84.5,114.4,84.5,230.6c0,166.6-1.4,300.7-1.4,341.7c0,33.1,22.4,72,85.5,59.7c494.5-164.8,850.8-631.4,850.8-1181.4 C2490.3,557.5,1932.8,0,1245.2,0"></path>
+              </svg></a><a class="project__options--linkpreview networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Preview Project" target="_blank" rel="noopener noreferrer">  
+              <svg class="networks__logo" viewBox="0 0 20 20">
+                <path class="networks__path" d="M0.2,10C3,4.6,9.6,2.4,15,5.2c2.1,1.1,3.7,2.7,4.8,4.8C17,15.4,10.4,17.6,5,14.8C2.9,13.7,1.3,12.1,0.2,10z M10,14c2.2,0,4-1.8,4-4s-1.8-4-4-4s-4,1.8-4,4S7.8,14,10,14z M10,12c-1.1,0-2-0.9-2-2s0.9-2,2-2s2,0.9,2,2S11.1,12,10,12z"></path>
+              </svg></a>
+          </div>
+          <div class="project__title"></div>
         </div>
       </div>
     </section>
     <section class="about section" id="section__about">
       <h2 class="about__title title">ABOUT ME</h2>
       <div class="about__container aboutme">
-        <div class="aboutme__description">
-          <p class="aboutme__description--paragraph">Hi! My name is Alejandro Garcia. <br><br> Since I was very young I was very interested in technology, first in electronics, I liked to disassemble electronic objects and see how they worked inside.</p>
-          <p class="aboutme__description--paragraph">Years went by and I decided to study a career in electronics, I started working in the electronics field and programming caught my attention, I started with microcontrollers and so I could combine my two passions, electronics and programming.</p>
-          <p class="aboutme__description--paragraph">I had the opportunity to work as a software developer in the electronics industry, programming test equipment for electronic cards (Functional Tests), and automation of production lines with PLC.</p>
-          <p class="aboutme__description--paragraph">I've been studying Web programming for 1 year, and since the first day I've been excited with this world, and waiting for the opportunity to work in this fascinating area, for the moment I'm in the Front-End area and little by little I'm getting into the Back-End.</p>
-        </div><img class="aboutme__image" src="./assets/photos/aboutme-illustration.svg" alt="About illustator">
+        <ul class="about__timeline timeline">
+          <li class="timeline__point--one point">  </li>
+          <li class="timeline__point--two point">      </li>
+          <li class="timeline__point--three point">      </li>
+          <li class="timeline__point--four point">      </li>
+          <li class="timeline__point--five point">      </li>
+          <li class="timeline__point--six point">     </li>
+          <li class="timeline__point--seven point"> </li>
+          <li class="timeline__point--eight point"> </li>
+          <li class="timeline__point--nine point"> </li>
+          <li class="timeline__point--ten point"> </li>
+        </ul>
+        <p class="aboutme__one aboutme__paragraph">Soy una persona autodidacta, y apasionado por la programación. Desde muy pequeño me interesó mucho la tecnología, primero la electrónica, me gustaba desmontar objetos electrónicos y ver como funcionaban por dentro.</p>
+        <p class="aboutme__two aboutme__paragraph">Decidí estudiar la carrera de electrónica, donde me encontré con los microcontroladores y así pude combinar mis dos actuales pasiones, la electrónica y la programación.</p>
+        <p class="aboutme__three aboutme__paragraph">Comencé a trabajar en el campo de la electrónica como tecnico de diagnostico.</p>
+        <p class="aboutme__four aboutme__paragraph">Emprendi mi negocio donde ofrecía servicios de renta y reparación de computadoras. Aquí comencé a adentrarme más en el mundo de la programación de forma autodidacta, con ActionScript y Visual Basic.</p>
+        <p class="aboutme__five aboutme__paragraph">Empecé a trabajar como técnico de ensamble mecanico, para la industria electrónica, donde se fabrican equipos de prueba y automatización para empresas que fabrican productos electrónicos.</p>
+        <p class="aboutme__six aboutme__paragraph">Fui ascendido a técnico de hardware, donde realizaba el ruteo y cableado de la parte eléctrica y electrónica de los equipos.</p>
+        <p class="aboutme__seven aboutme__paragraph">Me ascendieron a Ingeniero de Hardware, donde realizaba los diagramas eléctricos y la depuración de la parte eléctrica y electrónica.</p>
+        <div class="aboutme__eight aboutme__paragraph"> <span class="aboutme__paragraph--title"> 
+            <ul class="aboutme__paragraph--list"> 
+              <li>Fui ascendido a  Ingeniero de Desarrollo mis responsabilidades:</li>
+              <li>Parte lógica de los equipos mediante programación (C, C#, LabView, TestStand, CVI, PLC Siemens(TIA Portal))</li>
+              <li>BOM(Bill Of Materials)</li>
+              <li>Realización de diagramas electricos</li>
+              <li>Depuración del código y parte electrica.</li>
+              <li>Manual del equipo</li>
+              <li>Entrega e instalación del equipo en sitio al cliente.</li>
+            </ul></span></div>
+        <p class="aboutme__nine aboutme__paragraph">Tuve la oportunidad de montar un negocio, y decidí trabajar como freelance, donde realizo trabajos de instalación eléctrica residencial, y en el área de desarrollo con lenguajes como C#, para aplicaciones móviles y de escritorio.</p>
+        <p class="aboutme__ten aboutme__paragraph">Desde entonces me he dedicado de manera autonoma a estudiar varios lenguajes de programación, me enfoque en Desarrollo Web, y desde el primer día he estado entusiasmado con este mundo, quiero trabajar en esta fascinante área, de momento estoy en el área de Front-End y poco a poco quiero ir adentrandome en el Back-End.<br><br> Y sobre todo, nunca dejar de aprender. </p>
       </div>
     </section>
     <section class="contact section" id="section__contact">
       <h2 class="contact__title title">CONTACT</h2>
       <div class="contact__type">
         <p class="contact__type--message">To know more about me, and to be able to work together you can find me at:</p>
-        <div class="contact__type--networks"><a class="contact__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer"><img class="contact__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false"><span class="contact__name--github">GitHub</span></a><a class="contact__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  <img class="contact__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false"><span class="contact__name--linkedin">Linkedin</span></a><a class="contact__link--mail networks" href="mailto:alejo_2986@hotmail.com" title="Send Mail" target="_blank" rel="noopener noreferrer">  <img class="contact__icon--mail networks__logo" src="./assets/icons/mail-icon.svg" alt="icon of linkedin mail" loading="lazy" draggable="false"><span class="contact__name--mail">E-mail</span></a></div>
+        <div class="contact__type--networks"><a class="contact__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer">
+            <svg class="home__icon--github networks__logo" viewBox="0 0 2500 2432">
+              <path class="networks__path" d="M1245.2,0C557.6,0,0,557.5,0,1245.2c0,550.2,356.8,1016.9,851.5,1181.5c62.2,11.5,85.1-27,85.1-59.9 c0-29.7-1.2-127.8-1.7-231.8c-346.4,75.3-419.5-146.9-419.5-146.9c-56.6-143.9-138.3-182.2-138.3-182.2c-113-77.3,8.5-75.7,8.5-75.7 c125,8.8,190.9,128.3,190.9,128.3c111.1,190.4,291.3,135.3,362.3,103.5c11.2-80.5,43.4-135.4,79.1-166.5 c-276.6-31.5-567.3-138.3-567.3-615.4c0-135.9,48.6-247,128.3-334.2c-12.9-31.4-55.5-158,12.1-329.5c0,0,104.6-33.5,342.5,127.6 c99.3-27.6,205.8-41.4,311.7-41.9c105.8,0.5,212.4,14.3,311.9,41.9c237.7-161.1,342.1-127.6,342.1-127.6 c67.8,171.5,25.1,298.2,12.2,329.5c79.8,87.2,128.1,198.3,128.1,334.2c0,478.2-291.3,583.6-568.6,614.4 c44.7,38.6,84.5,114.4,84.5,230.6c0,166.6-1.4,300.7-1.4,341.7c0,33.1,22.4,72,85.5,59.7c494.5-164.8,850.8-631.4,850.8-1181.4 C2490.3,557.5,1932.8,0,1245.2,0"></path>
+            </svg><span class="contact__name--github networks__name">GitHub</span></a><a class="contact__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  
+            <svg class="home__icon--linkedin networks__logo" viewBox="0 0 2490 2500">
+              <path class="networks__path" d="M2306,5H184C82.4,5,0,84.9,0,183.4v2133.3c0,98.5,82.4,178.3,184,178.3h2122c101.6,0,184-79.8,184-178.3V183.4 C2490,84.9,2407.6,5,2306,5z M756.7,2088.8H384.1v-1121h372.6V2088.8z M570.5,814.8h-2.4c-125.1,0-205.9-86.1-205.9-193.7 c0-110,83.3-193.7,210.8-193.7c127.4,0,205.9,83.7,208.3,193.7C781.3,728.7,700.4,814.8,570.5,814.8z M2100.3,2088.7h-372.6v-599.6 c0-150.7-53.9-253.5-188.7-253.5c-103,0-164.3,69.3-191.2,136.3c-9.9,23.9-12.3,57.4-12.3,90.9v626H962.9c0,0,4.9-1015.8,0-1121 h372.7v158.6c49.6-76.4,138.2-184.9,335.8-184.9c245.1,0,428.9,160.2,428.9,504.5V2088.7z"></path>
+            </svg><span class="contact__name--linkedin networks__name">Linkedin</span></a><a class="contact__link--mail networks" href="mailto:alejo_2986@hotmail.com" title="Send Mail" target="_blank" rel="noopener noreferrer">  
+            <svg class="home__icon--mail networks__logo" viewBox="0 0 150 150">
+              <path class="networks__path" d="M143.2,26.9c-2-2.8-5.3-4.8-9.2-4.8H15.9c-3.6,0-6.9,1.8-8.9,4.6l68.2,56.8L143.2,26.9z"></path>
+              <path class="networks__path" d="M5,36.3V117c0,6.1,4.8,10.9,10.9,10.9H134c6.1,0,10.9-4.8,10.9-10.9V36.6L75.3,94.9L5,36.3z"></path>
+            </svg><span class="contact__name--mail networks__name">E-mail</span></a></div>
       </div>
     </section>
     <footer class="footer">
       <p class="footer__copyright">Made in <img class="footer__copyright--icon" title="México" src="./assets/icons/mexico-icon.ico" alt="mexico flag" loading="lazy" draggable="false"> by Alejandro Garcia Alonso</p>
-      <div class="footer__networks"><a class="footer__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer"> <img class="footer__icon--github networks__logo" src="./assets/icons/github-icon-hover.svg" alt="icon of repositorio from  Alejandro Garcia" loading="lazy" draggable="false"></a><a class="footer__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  <img class="footer__icon--linkedin networks__logo" src="./assets/icons/linkedin-icon-hover.svg" alt="icon of linkedin from  Alejandro Garcia" loading="lazy" draggable="false"></a><a class="footer__link--mail networks" href="mailto:alejo_2986@hotmail.com" title="Send Mail" target="_blank" rel="noopener noreferrer">  <img class="footer__icon--mail networks__logo" src="./assets/icons/mail-icon.svg" alt="icon of linkedin mail" loading="lazy" draggable="false"></a></div>
-      <div class="footer__menumobil menumobil">
+      <div class="footer__networks"><a class="footer__link--github networks" href="https://github.com/AletzMan" title="Go To GitHub" target="_blank" rel="noopener noreferrer"> 
+          <svg class="home__icon--github networks__logo" viewBox="0 0 2500 2432">
+            <path class="networks__path" d="M1245.2,0C557.6,0,0,557.5,0,1245.2c0,550.2,356.8,1016.9,851.5,1181.5c62.2,11.5,85.1-27,85.1-59.9 c0-29.7-1.2-127.8-1.7-231.8c-346.4,75.3-419.5-146.9-419.5-146.9c-56.6-143.9-138.3-182.2-138.3-182.2c-113-77.3,8.5-75.7,8.5-75.7 c125,8.8,190.9,128.3,190.9,128.3c111.1,190.4,291.3,135.3,362.3,103.5c11.2-80.5,43.4-135.4,79.1-166.5 c-276.6-31.5-567.3-138.3-567.3-615.4c0-135.9,48.6-247,128.3-334.2c-12.9-31.4-55.5-158,12.1-329.5c0,0,104.6-33.5,342.5,127.6 c99.3-27.6,205.8-41.4,311.7-41.9c105.8,0.5,212.4,14.3,311.9,41.9c237.7-161.1,342.1-127.6,342.1-127.6 c67.8,171.5,25.1,298.2,12.2,329.5c79.8,87.2,128.1,198.3,128.1,334.2c0,478.2-291.3,583.6-568.6,614.4 c44.7,38.6,84.5,114.4,84.5,230.6c0,166.6-1.4,300.7-1.4,341.7c0,33.1,22.4,72,85.5,59.7c494.5-164.8,850.8-631.4,850.8-1181.4 C2490.3,557.5,1932.8,0,1245.2,0"></path>
+          </svg></a><a class="footer__link--linkedin networks" href="https://www.linkedin.com/in/alejandro-garcia-alonso-596788b8/" title="Go To Linkedin" target="_blank" rel="noopener noreferrer">  
+          <svg class="home__icon--linkedin networks__logo" viewBox="0 0 2490 2500">
+            <path class="networks__path" d="M2306,5H184C82.4,5,0,84.9,0,183.4v2133.3c0,98.5,82.4,178.3,184,178.3h2122c101.6,0,184-79.8,184-178.3V183.4 C2490,84.9,2407.6,5,2306,5z M756.7,2088.8H384.1v-1121h372.6V2088.8z M570.5,814.8h-2.4c-125.1,0-205.9-86.1-205.9-193.7 c0-110,83.3-193.7,210.8-193.7c127.4,0,205.9,83.7,208.3,193.7C781.3,728.7,700.4,814.8,570.5,814.8z M2100.3,2088.7h-372.6v-599.6 c0-150.7-53.9-253.5-188.7-253.5c-103,0-164.3,69.3-191.2,136.3c-9.9,23.9-12.3,57.4-12.3,90.9v626H962.9c0,0,4.9-1015.8,0-1121 h372.7v158.6c49.6-76.4,138.2-184.9,335.8-184.9c245.1,0,428.9,160.2,428.9,504.5V2088.7z"></path>
+          </svg></a><a class="footer__link--mail networks" href="mailto:alejo_2986@hotmail.com" title="Send Mail" target="_blank" rel="noopener noreferrer">  
+          <svg class="home__icon--mail networks__logo" viewBox="0 0 150 150">
+            <path class="networks__path" d="M143.2,26.9c-2-2.8-5.3-4.8-9.2-4.8H15.9c-3.6,0-6.9,1.8-8.9,4.6l68.2,56.8L143.2,26.9z"></path>
+            <path class="networks__path" d="M5,36.3V117c0,6.1,4.8,10.9,10.9,10.9H134c6.1,0,10.9-4.8,10.9-10.9V36.6L75.3,94.9L5,36.3z"></path>
+          </svg></a></div>
+      <nav class="footer__menumobil menumobil">
         <div class="menumobil__link--select">HOME</div>
         <ul class="menumobil__links">
           <li class="menumobil__links--home link"></li>
@@ -98,7 +194,11 @@
           <li class="menumobil__links--about link"></li>
           <li class="menumobil__links--contact link"></li>
         </ul>
-      </div>
+      </nav>
     </footer>
+    <div class="section__bubbles"></div>
+    <div class="modal">
+      <button class="modal__button">CLOSE</button><img class="modal__image" src="./assets/photos/project_1.jpg">
+    </div>
   </body>
 </html>

@@ -6,28 +6,47 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var menuDesktop = document.querySelectorAll(".header__menu a");
-var menuDesktopArea = document.querySelectorAll(".header__menu li");
-var selectItemMenu = document.querySelector(".menu__selection");
-var presentation = document.querySelector(".description__profesion");
-var sections = document.querySelectorAll(".section");
-var sectionHome = document.querySelector(".home");
-var header = document.querySelector(".header");
-var footer = document.querySelector(".footer");
-var typeSkills = document.querySelectorAll(".technologies");
-var containerSkills = document.querySelector(".logos");
+var DESKTOP_MENU_LINKS = document.querySelectorAll(".menu__list--link");
+var DESKTOP_MENU_ITEMS = document.querySelectorAll(".menu__list");
+var SELECTED_MENU_ITEM = document.querySelector(".menu__selection");
+var presentation = document.querySelector(".landscape__window--text");
+var SECTIONS = document.querySelectorAll(".section");
+var SECTION_TITLES = document.querySelectorAll(".title");
+var SLOGAN = document.querySelector(".home__slogan");
+var GREETINGS = document.querySelector(".home__greetings");
+var SKILL_CATEGORY_LABELS = document.querySelectorAll(".label__tech");
+var ABOUT_PARAGRAPHS = document.querySelectorAll(".aboutme__paragraph");
+var ABOUT_PARAGRAPHS_LIST = document.querySelector(".aboutme__paragraph--list");
+var CONTACT_MESSAGE = document.querySelector(".contact__type--message");
+var SECTION_BUBBLES = document.querySelector(".section__bubbles");
+var FOOTER = document.querySelector(".footer");
+var SKILLS_CATEGORIES = document.querySelectorAll(".technologies");
+var CONTAINER_SKILLS = document.querySelector(".logos");
 var containerProjects = document.querySelector(".projects__container");
 var project = document.querySelector(".project");
 var menuMobilSelect = document.querySelector(".menumobil__link--select");
 var menuMobilContainer = document.querySelector(".menumobil");
+var modal = document.querySelector(".modal");
+var modalImage = document.querySelector(".modal__image");
+var modalButton = document.querySelector(".modal__button");
+var languageCheck = document.querySelector(".language__check");
 var menuMobil = document.querySelectorAll(".link");
-selectItemMenu.style.left = "0px";
-selectItemMenu.style.top = "0px";
-var textPresentation = ['Software Developer', 'Front-End Developer', 'Electrical Design'];
-var numbertags = 45;
+var textPresentation = [];
+var NUMBER_BUBBLE = 20;
+var SIZE_BUBBLE = 45;
+var NAME_LOGOS = ["html", "css", "javascript", "sass", "pug", "git", "github", "mysql", "csharp", "netcore", "xamarin", "xaml", "c", "vscode", "vs", "labview", "teststand", "cvi"];
 var containerTags = [];
-var nameTags = ["<header>", "<section>", "<footer>", "<nav>", "<aside>", "<img>", "<button>", "<input>", "<picture>", "<table>", "<meta>", "<select>", "<span>", "<textarea>", "<video>"];
-var nameLogos = ["html", "css", "javascript", "sass", "pug", "git", "github", "mysql", "csharp", "netcore", "xamarin", "xaml", "c", "vscode", "vs", "labview", "teststand", "cvi"];
+var selectedLanguage = "spanish";
+
+onload = function onload() {
+  SELECTED_MENU_ITEM.style.left = "0px";
+  SELECTED_MENU_ITEM.style.top = "0px";
+  CreateLogoSkill(0);
+  CreateProject();
+  initAnimation();
+  scroll(0, 0);
+  selectLanguage();
+};
 
 var mobileDetect = function mobileDetect() {
   var check = false;
@@ -37,18 +56,73 @@ var mobileDetect = function mobileDetect() {
   })(navigator.userAgent || navigator.vendor || window.opera);
 
   return check;
+}; ////SELECT LANGUAGE//////
+
+
+var LANGUAGE = {
+  english: {
+    header: ["Home", "Skills", "Projects", "About Me", "Contact"],
+    section: ["HOME", "SKILLS", "PROJECTS", "ABOUT ME", "CONTACT"],
+    intro: ["Hey, <br> My name is", '"Transforming concepts and design, into code"'],
+    skills: ["Web", "Mobil", "Desktop", "Test & Measurement", "Tools & Platforms"],
+    about: ["ALWAYS", "I am a self-taught person, and passionate about programming. From a very young age I was very interested in technology, first electronics, I liked to disassemble electronic objects and see how they worked inside.", "I decided to study electronics, where I came across microcontrollers and so I was able to combine my two current passions, electronics and programming.", "I started working in the electronics field as a diagnostic technician.", "I set up my own business, where I offered computer rental and repair services. Here I started to delve into the world of programming in a self-taught way, with ActionScript and Visual Basic.", "I started working as a mechanical assembly technician for the electronics industry, where test and automation equipment is manufactured for companies that manufacture electronic products.", "I was promoted to hardware technician, where I did the routing and wiring of the electrical and electronic part of the equipment.", "I was promoted to Hardware Engineer, where I did the electrical diagrams and debugging of the electrical and electronics.", [{
+      devsoft: ["I was promoted to Development Engineer, my responsibilities:", "Logical part of the equipment by programming (C, C#, LabView, TestStand, CVI, PLC Siemens(TIA Portal))", "BOM(Bill Of Materials)", "Realization of electrical diagrams", "Debugging of the code and electrical part", "Equipment manual", "Delivery and installation of the equipment on site to the customer"]
+    }], "I had the opportunity to start a business, and I decided to work as a freelance, where I do residential electrical installation work, and in the area of development with languages such as C #, for mobile and desktop applications.", "Since then I have dedicated myself independently to study several programming languages, I focus on Web Development, and from the first day I have been excited about this world, I want to work in this fascinating area, at the moment I am in the Front-End area and little by little I want to go deeper into the Back-End. And above all, never stop learning."],
+    contact: ["To know more about me, and to be able to work together you can find me at:"],
+    footer: ["Made in <img class='footer__copyright--icon' title='México' src='./assets/icons/mexico-icon.ico' alt='mexico flag' loading='lazy' draggable='false'> by Alejandro Garcia Alonso"]
+  },
+  spanish: {
+    header: ["Inicio", "Habilidades", "Proyectos", "Sobre mi", "Contacto"],
+    section: ["INICIO", "HABILIDADES", "PROYECTOS", "SOBRE MI", "CONTACTO"],
+    intro: ["Hola, <br> Mi nombre es", '"Transformando conceptos y diseño, en código"'],
+    skills: ["Web", "Mobil", "Desktop", "Prueba y Medición", "Herramientas y Plataformas"],
+    about: ["SIEMPRE", "Soy una persona autodidacta, y apasionado por la programación. Desde muy pequeño me interesó mucho la tecnología, primero la electrónica, me gustaba desmontar objetos electrónicos y ver como funcionaban por dentro.", "Decidí estudiar la carrera de electrónica, donde me encontré con los microcontroladores y así pude combinar mis dos actuales pasiones, la electrónica y la programación.", "Comencé a trabajar en el campo de la electrónica como tecnico de diagnostico.", "Emprendi mi negocio donde ofrecía servicios de renta y reparación de computadoras. Aquí comencé a adentrarme más en el mundo de la programación de forma autodidacta, con ActionScript y Visual Basic.", "Empecé a trabajar como técnico de ensamble mecanico, para la industria electrónica, donde se fabrican equipos de prueba y automatización para empresas que fabrican productos electrónicos.", "Fui ascendido a técnico de hardware, donde realizaba el ruteo y cableado de la parte eléctrica y electrónica de los equipos.", "Fui ascendido a Ingeniero de Hardware, donde realizaba los diagramas eléctricos y la depuración de la parte eléctrica y electrónica.", [{
+      devsoft: ["Fui ascendido a Ingeniero de Desarrollo, mis responsabilidades:", "Parte lógica de los equipos mediante programación (C, C#, LabView, TestStand, CVI, PLC Siemens(TIA Portal))", "BOM(Lista de materiales)", "Realización de esquemas eléctricos", "Depuración del código y parte electrica", "Manual del equipo", "Entrega e instalación del equipo en sitio al cliente"]
+    }], "Tuve la oportunidad de montar un negocio, y decidí trabajar como freelance, donde realizo trabajos de instalación eléctrica residencial, y en el área de desarrollo con lenguajes como C#, para aplicaciones móviles y de escritorio.", "Desde entonces me he dedicado de manera autonoma a estudiar varios lenguajes de programación, me enfoque en Desarrollo Web, y desde el primer día he estado entusiasmado con este mundo, quiero trabajar en esta fascinante área, de momento estoy en el área de Front-End y poco a poco quiero ir adentrandome en el Back-End. Y sobre todo, nunca dejar de aprender."],
+    contact: ["Para saber más sobre mí, y poder trabajar juntos puedes encontrarme en:"],
+    footer: ["Hecho en <img class='footer__copyright--icon' title='México' src='./assets/icons/mexico-icon.ico' alt='mexico flag' loading='lazy' draggable='false'> por Alejandro Garcia Alonso"]
+  }
+};
+languageCheck.addEventListener('change', function () {
+  selectedLanguage = languageCheck.checked ? "english" : "spanish";
+  setTimeout(function () {
+    selectLanguage();
+  }, 300);
+});
+
+var selectLanguage = function selectLanguage() {
+  var lan = selectedLanguage == "spanish" ? LANGUAGE.spanish : LANGUAGE.english;
+  DESKTOP_MENU_LINKS.forEach(function (menu, index) {
+    menu.innerText = lan.header[index];
+  });
+  SECTION_TITLES.forEach(function (section, index) {
+    section.innerText = lan.section[index];
+  });
+  GREETINGS.innerHTML = lan.intro[0];
+  SLOGAN.innerHTML = lan.intro[1];
+  SKILL_CATEGORY_LABELS.forEach(function (label, index) {
+    label.innerText = lan.skills[index];
+  });
+  ABOUT_PARAGRAPHS.forEach(function (paragraph, index) {
+    if (paragraph.nodeName === "P") {
+      paragraph.innerText = lan.about[index + 1];
+    } else {
+      for (var i = 0; i < ABOUT_PARAGRAPHS_LIST.childElementCount; i++) {
+        ABOUT_PARAGRAPHS_LIST.children[i].innerText = lan.about[8][0].devsoft[i];
+      }
+    }
+  });
+  CONTACT_MESSAGE.innerHTML = lan.contact[0];
+  FOOTER.children[0].innerHTML = lan.footer[0];
 };
 
-onload = function onload() {
-  CreateLogoSkill(0);
-  CreateProject();
-  initAnimation();
-  scroll(0, 0);
+var contentPresentation = function contentPresentation() {
+  textPresentation = languageCheck.checked ? ['Software Developer', 'Front-End Developer', 'Electrical Design'] : ['Desarrollador de Sofware', 'Desarrollador Front-End', 'Diseño Electrico'];
 };
 
-for (var index = 0; index < menuDesktop.length; index++) {
-  menuDesktop.item(index).addEventListener('mouseup', function (e) {
-    menuDesktop.forEach(function (elementMenuUnSelected) {
+for (var index = 0; index < DESKTOP_MENU_LINKS.length; index++) {
+  DESKTOP_MENU_LINKS.item(index).addEventListener('mouseup', function (e) {
+    DESKTOP_MENU_LINKS.forEach(function (elementMenuUnSelected) {
       elementMenuUnSelected.style.color = "var(--color_font)";
     });
     setTimeout(function () {
@@ -61,41 +135,53 @@ for (var index = 0; index < menuDesktop.length; index++) {
       }, 0);
     }
   });
+  DESKTOP_MENU_LINKS.item(index).addEventListener('mouseover', function (e) {
+    e.target.style.color = "var(--color_activated)";
+  });
+  DESKTOP_MENU_LINKS.item(index).addEventListener('mouseout', function (e) {
+    e.target.style.color = "var(--color_font)";
+  });
 }
 
 setTimeout(function () {
-  var time;
-  var intervalPresentetion = setInterval(LoadPresentation, 100);
+  var timeInit;
+  var timeElapsed;
   var numLetter = 0;
   var reverse = false;
   var textReverse = '';
   var textNumber = 0;
+  var delayON = true;
+  var delay = 3500;
+  setInterval(function () {
+    contentPresentation();
+    if (delayON) timeInit = new Date().getTime();
 
-  function LoadPresentation() {
     if (numLetter < textPresentation[textNumber].length && !reverse) {
       presentation.innerHTML += textPresentation[textNumber][numLetter];
       textReverse = textPresentation[textNumber];
       numLetter += 1;
+      delayON = false;
     } else {
-      time = new Date().getTime();
       reverse = true;
+      timeElapsed = new Date().getTime() - timeInit;
     }
 
-    if (reverse) {
+    if (reverse && timeElapsed > delay) {
       presentation.innerHTML = textReverse.substring(0, numLetter);
       numLetter -= 1;
 
-      if (presentation.innerHTML.length == 0) {
+      if (presentation.innerHTML.length === 0) {
         reverse = false;
-        numLetter = 0;
         textNumber += 1;
+        numLetter = 0;
+        delayON = true;
 
         if (textNumber > textPresentation.length - 1) {
           textNumber = 0;
         }
       }
     }
-  }
+  }, 100);
 }, 1600);
 
 var TagBubble =
@@ -117,16 +203,15 @@ function () {
     value: function createItem() {
       var _this = this;
 
-      var newTagMove = document.createElement("div"); //newTagMove.textContent = nameTags[GetRandomNumber(0, 14)];
-
-      newTagMove.style.backgroundImage = "url('./assets/icons/" + nameLogos[GetRandomNumber(0, nameLogos.length - 1)] + "-logo.svg')";
+      var newTagMove = document.createElement("div");
+      newTagMove.style.backgroundImage = "url('./assets/icons/" + NAME_LOGOS[GetRandomNumber(0, NAME_LOGOS.length - 1)] + "-logo.svg')";
       newTagMove.classList = "tag__move";
       newTagMove.style.left = "".concat(this.posX, "px");
       newTagMove.style.top = "".concat(this.posY, "px");
       containerTags.push(newTagMove);
-      sectionHome.appendChild(newTagMove);
+      SECTION_BUBBLES.appendChild(newTagMove);
       var fontSize = parseFloat(window.getComputedStyle(newTagMove, null).getPropertyValue('font-size'));
-      newTagMove.style.width = "".concat(Math.floor(newTagMove.getBoundingClientRect().width + 40), "px");
+      newTagMove.style.width = "".concat(Math.floor(newTagMove.getBoundingClientRect().width + SIZE_BUBBLE), "px");
       newTagMove.style.paddingTop = "".concat(Math.floor(newTagMove.getBoundingClientRect().width / 2) - fontSize / 1.5, "px");
       newTagMove.style.height = "".concat(Math.floor(newTagMove.getBoundingClientRect().width), "px");
       this.width = Math.floor(newTagMove.getBoundingClientRect().width);
@@ -188,9 +273,9 @@ var initAnimation = function initAnimation() {
 };
 
 var createBubbleTags = function createBubbleTags() {
-  for (var _index2 = 0; _index2 < numbertags; _index2++) {
+  for (var _index2 = 0; _index2 < NUMBER_BUBBLE; _index2++) {
     var positionTagX = GetRandomNumber(50, window.innerWidth - 50);
-    var positionTagY = GetRandomNumber(100, body.getBoundingClientRect().height - 20);
+    var positionTagY = GetRandomNumber(100, SECTION_BUBBLES.getBoundingClientRect().height - 20);
     bubblesContainer.push(new TagBubble(positionTagX, positionTagY, GetRandomNumber(-20, 70), GetRandomNumber(-20, 70), GetRandomNumber(1, 10)));
   }
 
@@ -268,8 +353,8 @@ var detectCollisions = function detectCollisions() {
 var borderCollisionDetection = function borderCollisionDetection() {
   var collisionLimitXLeft = 1;
   var collisionLimitXRight = window.outerWidth - 30;
-  var collisionLimitYTop = 100;
-  var collisionLimitYBottom = body.getBoundingClientRect().height - 70;
+  var collisionLimitYTop = 57;
+  var collisionLimitYBottom = SECTION_BUBBLES.getBoundingClientRect().height - 57;
   var speedReset = 0.95;
   var bubble;
 
@@ -311,19 +396,19 @@ function GetRandomNumberFloat(min, max) {
 
 
 var sourceLogos = "./assets/icons/";
-var selectSkills = document.querySelector('.logos__select');
+var selectSkills = document.querySelector('.skills__select');
 selectSkills.addEventListener('change', function (e) {
   console.log(e.target.value);
   CreateLogoSkill(e.target.value);
 });
 
 var _loop = function _loop(_index4) {
-  typeSkills[_index4].addEventListener("click", function (e) {
+  SKILLS_CATEGORIES[_index4].addEventListener("click", function (e) {
     CreateLogoSkill(_index4);
   });
 };
 
-for (var _index4 = 0; _index4 < typeSkills.length; _index4++) {
+for (var _index4 = 0; _index4 < SKILLS_CATEGORIES.length; _index4++) {
   _loop(_index4);
 }
 
@@ -332,16 +417,16 @@ var SKILLSNAME = [["html", "css", "javascript", "pug", "sass", "git", "git hub",
 
 var CreateLogoSkill = function CreateLogoSkill(numberSkill) {
   do {
-    containerSkills.removeChild(containerSkills.lastChild);
-  } while (containerSkills.lastChild.className === "logos__name");
+    CONTAINER_SKILLS.removeChild(CONTAINER_SKILLS.lastChild);
+  } while (CONTAINER_SKILLS.lastChild.className === "skills__name");
 
   for (var _index5 = 0; _index5 < SKILLS[numberSkill].length; _index5++) {
     var newLogoTech = document.createElement("div");
-    newLogoTech.classList = "logos__name";
-    containerSkills.appendChild(newLogoTech);
+    newLogoTech.classList = "skills__name";
+    CONTAINER_SKILLS.appendChild(newLogoTech);
     newLogoTech.style.zIndex = "1";
     var newLogoBubble = document.createElement("div");
-    newLogoBubble.classList = "logos__bubble";
+    newLogoBubble.classList = "skills__bubble";
     newLogoTech.appendChild(newLogoBubble);
     var newLogoImage = document.createElement("img");
     newLogoImage.classList = "logo";
@@ -360,14 +445,20 @@ var CreateLogoSkill = function CreateLogoSkill(numberSkill) {
 var projectsZoom = document.querySelectorAll(".project__options--zoom");
 var body = document.querySelector("body");
 var sourcePhotos = "./assets/photos/project_";
-var Title = ["Draw Board", "Test Sequence", "Electronic Encyclopedia"];
-var Technologies = [["html", "css", "javascript", "pug", "sass"], ["csharp", "netcore", "xaml", "sql", "mysql", "git", "github"], ["csharp", "netcore", "xamarin", "xaml"], ["c", "csharp", "xaml", "labview"], ["vscode", "vs", "git", "labview"]];
+var Title = [];
+var Technologies = [["html", "css", "javascript", "pug", "sass"], ["csharp", "netcore", "xaml", "sql", "mysql", "git"], ["csharp", "netcore", "xamarin", "xaml"], ["c", "csharp", "xaml", "labview"], ["vscode", "vs", "git", "labview"]];
 var Repositories = ["https://aletzman.github.io/", "https://github.com/AletzMan", "https://aletzman.github.io/"];
 
 var CreateProject = function CreateProject() {
   for (var _index6 = 0; _index6 < 2; _index6++) {
     var newProject = project.cloneNode(true);
     containerProjects.appendChild(newProject);
+  }
+
+  if (mobileDetect()) {
+    Title = ["Drawing Board", "Test Sequence", "Electronic Encyclopedia"];
+  } else {
+    Title = ["Drawin g-Board", "Test-Se quence", "Electronic-E ncyclopedia"];
   }
 
   EditProjects();
@@ -380,9 +471,14 @@ var EditProjects = function EditProjects() {
   var projectsImage = document.querySelectorAll(".project__image");
   var projectsRepository = document.querySelectorAll(".project__options--repository");
   var projectsPreview = document.querySelectorAll(".project__options--linkpreview");
+  var projectCortainOne = document.querySelectorAll(".project__cortain--one");
+  var projectCortainTwo = document.querySelectorAll(".project__cortain--two");
   projectsZoom = document.querySelectorAll(".project__options--zoom");
 
   var _loop2 = function _loop2(_index7) {
+    projectCortainOne[_index7].style.display = mobileDetect() ? 'none' : 'block';
+    projectCortainTwo[_index7].style.display = mobileDetect() ? 'none' : 'block';
+    projectsTitle[_index7].style.display = !mobileDetect() ? 'none' : 'block';
     projectsTitle[_index7].innerHTML = Title[_index7];
 
     Technologies[_index7].forEach(function (namelogo) {
@@ -404,6 +500,8 @@ var EditProjects = function EditProjects() {
 
     projectsImage[_index7].src = sourcePhotos + _index7 + ".jpg";
     projectsRepository[_index7].href = Repositories[_index7];
+    projectCortainOne[_index7].innerText = Title[_index7].split(' ')[0];
+    projectCortainTwo[_index7].innerText = Title[_index7].split(' ')[1];
   };
 
   for (var _index7 = 0; _index7 < projects.length; _index7++) {
@@ -416,41 +514,27 @@ var EditProjects = function EditProjects() {
 var containerCreate = false;
 
 var AsignEvent = function AsignEvent() {
-  var projects = document.querySelector(".projects");
   projectsZoom.forEach(function (element, index) {
     element.addEventListener("mouseup", function () {
-      containerCreate = false;
-      var newPreviewContainer = document.createElement("div");
-      newPreviewContainer.classList = "previewContainer";
-      newPreviewContainer.style.height = window.innerHeight + 18 + "px";
-      body.appendChild(newPreviewContainer);
-      newPreviewContainer.style.top = scrollY + "px";
-      newPreviewContainer.style.left = "0px";
-      var newPreview = document.createElement("div");
-      newPreview.classList = "previewContainer__preview";
-      newPreviewContainer.appendChild(newPreview);
-      var newPreviewImage = document.createElement("img");
-      newPreviewImage.classList = "previewContainer__preview--image";
-      newPreviewImage.src = sourcePhotos + index + ".jpg";
-      newPreview.appendChild(newPreviewImage);
+      modalImage.src = sourcePhotos + index + ".jpg";
+      modal.style.transform = 'scale(1)';
       body.style.overflowX = "hidden";
       body.style.overflowY = "hidden";
-      setTimeout(function () {
-        containerCreate = true;
-      }, 1200);
     });
   });
 };
 
-body.addEventListener("mouseup", function () {
-  if (containerCreate) {
-    do {
-      body.removeChild(body.lastChild);
-    } while (body.lastChild.className === "previewContainer");
-
+window.addEventListener("mouseup", function (event) {
+  if (event.target == modal) {
+    modal.style.transform = 'scale(0)';
     body.style.overflowX = "auto";
     body.style.overflowY = "auto";
   }
+});
+modalButton.addEventListener("mouseup", function (event) {
+  modal.style.transform = 'scale(0)';
+  body.style.overflowX = "auto";
+  body.style.overflowY = "auto";
 }); ////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////--------- MENU MOBIL ---------/////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -463,23 +547,23 @@ var numberOfSectionsDisplaced = 0;
 
 var _loop3 = function _loop3(_index8) {
   menuMobil.item(_index8).addEventListener('mousedown', function (e) {
-    sections.forEach(function (section) {
+    SECTIONS.forEach(function (section) {
       section.style.opacity = 0;
     });
     indexMenuBefore = indexMenuCurrent;
     indexMenuCurrent = _index8;
     numberOfSectionsDisplaced = Math.abs(indexMenuCurrent - indexMenuBefore);
-    console.log(sections[_index8].getBoundingClientRect().height);
+    console.log(SECTIONS[_index8].getBoundingClientRect().height);
     var scrollPosition = 0;
 
     for (var numberSection = 0; numberSection < _index8; numberSection++) {
-      scrollPosition += sections[numberSection].getBoundingClientRect().height + 80;
+      scrollPosition += SECTIONS[numberSection].getBoundingClientRect().height + 80;
     }
 
     scrollPosition -= 16;
     scroll(0, scrollPosition);
     setTimeout(function () {
-      sections.forEach(function (section) {
+      SECTIONS.forEach(function (section) {
         section.style.opacity = 1;
       });
     }, 500);
@@ -499,30 +583,30 @@ document.addEventListener("scroll", function () {
     var designMobil = window.getComputedStyle(menuMobilContainer, null).getPropertyValue("display") == "none" ? false : true;
 
     var _loop4 = function _loop4(_index9) {
-      if (sections[_index9].getBoundingClientRect().y < 350 && sections[_index9].getBoundingClientRect().y > -20) {
+      if (SECTIONS[_index9].getBoundingClientRect().y < 350 && SECTIONS[_index9].getBoundingClientRect().y > -20) {
         if (designMobil) {
           positionMenuselected = menuMobilContainer.getBoundingClientRect().width / 16 / 5 * (_index9 + 1) - menuMobilSelect.getBoundingClientRect().width / 16 - 0;
           menuMobilSelect.style.left = "".concat(positionMenuselected, "rem");
           setTimeout(function () {
             menuMobil.forEach(function (section) {
-              section.style.filter = "invert(1)";
+              //section.style.filter = "invert(1)";
               section.style.top = "0.65rem";
-            });
-            menuMobil[_index9].style.filter = "brightness(1)";
+            }); //menuMobil[index].style.filter = "brightness(1)";
+
             menuMobil[_index9].style.top = "0rem";
             menuMobilSelect.innerText = nameTagMenu[_index9];
           }, 200);
         } else {
-          selectItemMenu.style.left = menuDesktopArea.item(_index9).getBoundingClientRect().left - menuDesktopArea.item(0).getBoundingClientRect().left - 1 + "px";
-          menuDesktop.forEach(function (elementMenuUnSelected) {
+          SELECTED_MENU_ITEM.style.left = DESKTOP_MENU_ITEMS.item(_index9).getBoundingClientRect().left - DESKTOP_MENU_ITEMS.item(0).getBoundingClientRect().left - 1 + "px";
+          DESKTOP_MENU_LINKS.forEach(function (elementMenuUnSelected) {
             elementMenuUnSelected.style.color = "var(--color_font)";
           });
-          menuDesktop.item(_index9).style.color = "var(--color_activated)";
+          DESKTOP_MENU_LINKS.item(_index9).style.color = "var(--color_activated)";
         }
       }
     };
 
-    for (var _index9 = 0; _index9 < sections.length; _index9++) {
+    for (var _index9 = 0; _index9 < SECTIONS.length; _index9++) {
       _loop4(_index9);
     }
   }

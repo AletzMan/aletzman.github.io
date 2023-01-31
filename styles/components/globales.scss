@@ -1,30 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Prosto+One&family=Raleway");
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&family=Inconsolata&family=Montserrat");
 
 html {
     scroll-behavior: smooth;
 }
-body{
+
+body {
+
     position: relative;
-    background: var(--color_backmedium);
+    background: var(--color_room_up);
     font-size: 100%;
-    font-family: var(--font-General); 
+    font-family: var(--font-General);
     font-display: auto;
+
     &::-webkit-scrollbar {
         width: 13px;
-      }
+    }
+
     &::-webkit-scrollbar-track {
-        background: var(--color_backlight); 
+        background: var(--color_backlight);
         border-radius: 1px;
-      }
+    }
+
     &::-webkit-scrollbar-thumb {
-        background: var(--color_backdark);             
+        background: var(--color_backdark);
         border-radius: 1px;
-      }
+    }
+
     &::-webkit-scrollbar-thumb:hover {
-        background: var(--color_backmedium); 
-    }  
+        background: var(--color_backmedium);
+    }
 }
-* , *::before , *::after {
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    vertical-align: baseline;
+    /* Standard syntax */
+}
+
+*::before,
+*::after {
     padding: 0;
     margin: 0;
     border: 0;
@@ -37,54 +54,44 @@ body{
     user-select: none;
     /* Standard syntax */
 }
+
 /* Evitamos problemas con las imagenes */
-img , picture , video , iframe , figure{
+img,
+picture,
+video,
+iframe,
+figure {
     max-width: 100%;
     width: 100%;
     display: block;
-    /* (Opcional) */ object-fit: cover;        
-    /* (Opcional) */ object-position: center center;
+    /* (Opcional) */
+    object-fit: cover;
+    /* (Opcional) */
+    object-position: center center;
 }
+
 :root {
-    --color_backdark: #121212;
-    --color_backmedium: #272727;
-    --color_backlight: #373737;
-    --color_deactivated: #64b4dabb;;
-    --color_activated: #61d3e7;
-    --color_font: #D6D6D6;
+
+
+
+    --color_room_left: #0f1218;
+    --color_room_right: #0f1218;
+    --color_room_up: #06080a;
+    --color_room_down: #06080a;
+    --color_room_back: #040607;
+
+    --color_backdark: #0c0e13;
+    --color_backmedium: #292f3b;
+    --color_backlight: #787C85;
+    --color_deactivated: #00ACB409;
+    --color_activated: #00ACB4;
+    --color_font: #c5c5c5;
     --color_fontTitle: #a7a7a7;
     --color_font_section: #EEEEEE22;
-    --color_back_section: #222831BB;
+    --color_back_section: #04212299;
     --color_bubble_hover: #64b4da33;
     --font_Display: 'DotGothic16', sans-serif;
-    --font-General: 'Raleway', sans-serif;
-    --font-Title: 'Prosto One', cursive;
-/*
-    --color_backdark: #222831;
-    --color_backmedium: #393E46;
-    --color_backlight: #626a77;
-    --color_deactivated: #ecb63755;;
-    --color_activated: #ecb637;
-    --color_font: #EEEEEE;
-    --color_font_section: #EEEEEE22;
-    --color_back_section: #222831BB;
-    --color_bubble_hover: #ecb63733;
-    --font_Display: 'DotGothic16', sans-serif;
-    --font-General: 'Raleway', sans-serif;
-    --font-Title: 'Prosto One', cursive;
-*/
-
- /*
-    --color_backdark: #111111;
-    --color_backmedium: #282b21;
-    --color_backlight: #3E432E;
-    --color_deactivated: #616F39;
-    --color_activated: #A7D129;
-    --color_font: #EEEEEE;
-    --color_font_section: #FFFFFF20;
-    --color_back_section: #00000099;
-    --font_Display: 'DotGothic16', sans-serif;
-    --font-General: 'Raleway', sans-serif;
-    --font-Title: 'Prosto One', cursive;
-*/
+    --font-General: 'Montserrat', sans-serif;
+    --font-Title: 'Philosopher', sans-serif;
+    
 }
